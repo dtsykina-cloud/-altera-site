@@ -1,0 +1,495 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0a4739" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="AL'TERA" />
+  <meta name="format-detection" content="telephone=yes" />
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="./altera-icon.svg" />
+  <title>AL'TERA — бухгалтерия нового поколения</title>
+  <meta name="description" content="Кликабельный прототип сайта бухгалтерской компании AL'TERA." />
+  <style>
+    :root{
+      --bg:#f5f1ea;
+      --paper:#fffdf8;
+      --surface:#ebe6dc;
+      --ink:#111713;
+      --muted:#656f68;
+      --green:#0a4739;
+      --green-2:#11604d;
+      --sage:#dfe9df;
+      --amber:#c49248;
+      --line:rgba(17,23,19,.13);
+      --shadow:0 18px 48px rgba(26,31,27,.10);
+      --radius:8px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+      color:var(--ink);
+      background:
+        linear-gradient(180deg,#fffdf8 0%,var(--bg) 48%,#efe8de 100%);
+      text-rendering:optimizeLegibility;
+    }
+    a{text-decoration:none;color:inherit}
+    button,input,select{font:inherit}
+    .page{min-height:100vh}
+    .container{width:min(1180px,calc(100% - 40px));margin:0 auto}
+    .header{
+      position:sticky;top:0;z-index:50;
+      background:rgba(255,253,248,.86);backdrop-filter:blur(18px);
+      border-bottom:1px solid transparent;
+    }
+    .header.scrolled{border-color:var(--line)}
+    .nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{display:flex;align-items:baseline;gap:12px;font-weight:800;letter-spacing:.01em;font-size:24px}
+    .brand small{font-size:11px;color:var(--muted);font-weight:500;letter-spacing:0}
+    .links{display:flex;align-items:center;gap:26px;font-size:13px}
+    .links a{position:relative}
+    .links a:after{content:"";position:absolute;left:0;right:100%;bottom:-6px;height:1px;background:var(--green);transition:.25s}
+    .links a:hover:after{right:0}
+    .nav-actions{display:flex;align-items:center;gap:12px}
+    .phone{font-size:13px;font-weight:600}
+    .btn{
+      border:1px solid var(--line);background:transparent;color:var(--ink);
+      min-height:46px;padding:0 20px;border-radius:var(--radius);display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      cursor:pointer;transition:.25s ease;font-weight:600;font-size:13px;
+    }
+    .btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,.08)}
+    .btn-primary{background:var(--green);color:white;border-color:var(--green)}
+    .btn-primary:hover{background:var(--green-2)}
+    .hero{padding:76px 0 54px;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+    .hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(223,233,223,.42),transparent 45%);pointer-events:none}
+    .hero-grid{position:relative;display:grid;grid-template-columns:1.04fr .96fr;gap:54px;align-items:center}
+    .eyebrow{font-size:12px;letter-spacing:.14em;color:var(--green);font-weight:800;text-transform:uppercase;margin-bottom:18px}
+    h1{font-size:60px;line-height:1.03;letter-spacing:-.035em;margin:0 0 24px;max-width:720px;font-weight:600}
+    h1 strong{color:var(--green);font-weight:700}
+    .lead{font-size:17px;line-height:1.72;color:#465049;max-width:590px;margin:0 0 30px}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+    .hero-actions .btn-primary{box-shadow:0 12px 28px rgba(8,63,52,.18)}
+    .hero-art{position:relative;height:480px}
+    .shape{position:absolute;box-shadow:var(--shadow)}
+    .disc{width:205px;height:205px;border-radius:50%;right:72px;top:8px;background:radial-gradient(circle at 35% 30%,#fff8ec,#d8c7ad 65%,#b89b6d)}
+    .block{width:230px;height:330px;right:154px;top:122px;border-radius:8px;background:linear-gradient(145deg,#17624f,#073d32 62%,#082b25);transform:skewY(2deg)}
+    .glass{width:172px;height:286px;left:18px;top:178px;border:1px solid rgba(255,255,255,.82);border-radius:8px;background:linear-gradient(180deg,rgba(255,255,255,.64),rgba(255,255,255,.22)),repeating-linear-gradient(90deg,rgba(255,255,255,.55) 0 3px,rgba(150,160,155,.22) 3px 5px);backdrop-filter:blur(3px)}
+    .line-card{position:absolute;right:0;width:156px;padding:14px 15px;border:1px solid var(--line);border-radius:8px;background:rgba(255,253,248,.8);backdrop-filter:blur(14px);display:flex;gap:10px;align-items:center}
+    .line-card i{width:34px;height:34px;border-radius:8px;border:1px solid var(--line);display:grid;place-items:center;font-style:normal;color:var(--green)}
+    .line-card b{font-size:17px}.line-card span{display:block;font-size:10px;color:var(--muted);margin-top:2px}
+    .lc1{top:90px}.lc2{top:170px}.lc3{top:250px}.lc4{top:330px}
+    section{padding:70px 0;border-bottom:1px solid var(--line)}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:28px}
+    h2{font-size:36px;letter-spacing:-.028em;margin:0;font-weight:700}
+    .section-head p{max-width:520px;color:var(--muted);line-height:1.6;margin:0}
+    .trust-grid,.audience-grid,.service-grid{display:grid;gap:14px}
+    .trust-grid{grid-template-columns:repeat(6,1fr)}
+    .audience-grid{grid-template-columns:repeat(5,1fr)}
+    .service-grid{grid-template-columns:repeat(6,1fr)}
+    .mini-card{padding:20px 16px;border:1px solid var(--line);border-radius:var(--radius);background:rgba(255,253,248,.56);min-height:136px;transition:.25s}
+    .mini-card:hover{transform:translateY(-4px);background:var(--paper);box-shadow:0 16px 35px rgba(25,30,27,.07);border-color:rgba(10,71,57,.24)}
+    .line-card:active,.mini-card:active,.case:active,.price-card:active{transform:translateY(-1px)}
+    .mini-card .icon{font-size:22px;margin-bottom:26px;color:var(--green)}.mini-card b{display:block;font-size:13px;line-height:1.35}.mini-card p{font-size:11px;line-height:1.55;color:var(--muted);margin:8px 0 0}
+    .steps{display:grid;grid-template-columns:repeat(6,1fr);gap:18px;position:relative}
+    .steps:before{content:"";position:absolute;left:7%;right:7%;top:30px;border-top:1px dashed #bfb9b0;z-index:0}
+    .step{position:relative;z-index:1}.step-num{width:60px;height:60px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(10,71,57,.22);background:var(--paper);margin-bottom:16px;font-weight:800;color:var(--green)}
+    .step b{font-size:13px}.step p{font-size:11px;line-height:1.55;color:var(--muted)}
+    .service-grid .mini-card{min-height:auto;padding:18px}
+    .pricing{display:grid;grid-template-columns:.75fr repeat(3,1fr);gap:14px;align-items:stretch}
+    .pricing-intro{padding:20px 0}.pricing-intro p{color:var(--muted);line-height:1.6;font-size:13px}
+    .price-card{padding:28px;border:1px solid var(--line);border-radius:var(--radius);background:rgba(255,253,248,.62);position:relative}
+    .price-card.featured{background:linear-gradient(155deg,#11604d,#073b30);color:white;transform:translateY(-8px);box-shadow:0 18px 42px rgba(8,65,52,.22)}
+    .badge{position:absolute;top:-10px;left:18px;background:#e9f2ee;color:var(--green);padding:5px 10px;border-radius:999px;font-size:10px;font-weight:700}
+    .price-card h3{font-size:13px;margin:0 0 12px}.price{font-size:25px;font-weight:700;margin:22px 0}.price-card ul{padding:0;margin:0;list-style:none;font-size:12px;line-height:2}.price-card li:before{content:"✓";margin-right:8px}
+    .bottom-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:30px}
+    .cases{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.case{min-height:250px;border:1px solid var(--line);border-radius:var(--radius);padding:20px;background:linear-gradient(145deg,#fffdf8,#ece6dc);position:relative;overflow:hidden}.case:after{content:"";position:absolute;width:110px;height:140px;right:-10px;bottom:-10px;background:linear-gradient(180deg,#d8dbc9,#7c978b);border-radius:8px}.case b{font-size:14px;line-height:1.45;display:block;max-width:160px;position:relative;z-index:1}.case span{font-size:10px;color:var(--muted);position:relative;z-index:1;font-weight:700;letter-spacing:.04em}
+    .faq{border-top:1px solid var(--line)}.faq-item{border-bottom:1px solid var(--line)}.faq-q{width:100%;background:none;border:0;padding:19px 0;display:flex;justify-content:space-between;gap:18px;cursor:pointer;text-align:left;font-weight:700}.faq-a{max-height:0;overflow:hidden;color:var(--muted);font-size:13px;line-height:1.65;transition:.25s}.faq-item.open .faq-a{max-height:180px;padding-bottom:18px}
+    .cta{margin:24px auto 44px;border-radius:12px;padding:44px;background:linear-gradient(120deg,#073b30,#0e4f40);color:white;display:flex;align-items:center;justify-content:space-between;gap:30px;overflow:hidden;position:relative}
+    .cta:after{content:"";position:absolute;right:8%;top:-35px;width:165px;height:165px;border-radius:50%;border:32px solid rgba(236,222,202,.85)}
+    .cta h2{max-width:520px}.cta .btn{position:relative;z-index:2;color:white;border-color:rgba(255,255,255,.45)}
+    footer{padding:30px 0 45px;color:var(--muted);font-size:12px}.footer-row{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+    .qualifier{position:fixed;right:24px;bottom:24px;z-index:100;width:min(390px,calc(100vw - 32px));}
+    .qualifier-toggle{margin-left:auto;width:64px;height:64px;border:0;border-radius:50%;background:var(--green);color:#fff;font-size:25px;box-shadow:0 16px 40px rgba(6,72,57,.28);cursor:pointer}
+    .qualifier-panel{display:none;margin-bottom:12px;background:rgba(251,250,247,.98);border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:0 24px 70px rgba(24,30,26,.18);backdrop-filter:blur(18px)}
+    .qualifier.open .qualifier-panel{display:block;animation:pop .25s ease}
+    @keyframes pop{from{opacity:0;transform:translateY(12px) scale(.98)}to{opacity:1;transform:none}}
+    .progress{height:4px;border-radius:999px;background:#e6e0d8;margin:14px 0 22px;overflow:hidden}.progress span{display:block;height:100%;background:var(--green);width:14%;transition:.25s}
+    .q-title{font-size:21px;line-height:1.25;margin:0 0 8px}.q-note{font-size:12px;color:var(--muted);margin:0}
+    .options{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}.option{border:1px solid var(--line);background:#fff;padding:13px;border-radius:11px;cursor:pointer;text-align:left}.option:hover,.option.selected{border-color:var(--green);box-shadow:inset 0 0 0 1px var(--green)}
+    .q-field{width:100%;border:1px solid var(--line);background:white;padding:13px;border-radius:11px;margin-top:10px;outline:none}.q-field:focus{border-color:var(--green)}
+    .q-footer{display:flex;justify-content:space-between;align-items:center;margin-top:18px}.q-footer button{min-height:42px}
+    .hidden{display:none!important}
+    .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#15231d;color:white;padding:13px 18px;border-radius:999px;font-size:13px;opacity:0;pointer-events:none;transition:.25s;z-index:200}.toast.show{opacity:1;bottom:34px}
+    .mobile-action-bar{display:none}
+    .line-card,.mini-card,.case,.price-card{cursor:pointer}
+    .line-card:focus-visible,.mini-card:focus-visible,.case:focus-visible,.price-card:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+    .price-card:after,.case:before{position:absolute;z-index:2;font-size:10px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--green);opacity:.72}
+    .price-card:after{content:"Получить расчет";left:26px;bottom:18px}
+    .case:before{content:"Разобрать похожий кейс";left:20px;bottom:18px}
+    .price-card ul{margin-bottom:26px}
+
+    @media (max-width:1000px){
+      .links{display:none}.hero-grid{grid-template-columns:1fr}.hero-art{height:390px}.trust-grid{grid-template-columns:repeat(3,1fr)}.steps{grid-template-columns:repeat(3,1fr)}.steps:before{display:none}.audience-grid{grid-template-columns:repeat(2,1fr)}.service-grid{grid-template-columns:repeat(3,1fr)}.pricing{grid-template-columns:repeat(3,1fr)}.pricing-intro{grid-column:1/-1}.bottom-grid{grid-template-columns:1fr}
+    }
+    @media (max-width:680px){
+      .container{width:min(100% - 24px,1180px)}
+      .nav{height:66px}.brand{font-size:22px}.brand small,.phone{display:none}.nav-actions .btn{display:none}
+      .hero{padding:38px 0 34px}
+      .hero-grid{gap:26px}
+      h1{font-size:39px;line-height:1.08}
+      h2{font-size:29px}
+      .lead{font-size:15px}
+      section{padding:48px 0}
+      .hero-actions{gap:10px}
+      .hero-actions .btn{width:100%}
+      .hero-art{height:300px;transform:scale(.88);transform-origin:left top}
+      .line-card{right:-18px}
+      .trust-grid,.service-grid{grid-template-columns:repeat(2,1fr)}
+      .audience-grid,.steps{grid-template-columns:1fr}
+      .pricing{grid-template-columns:1fr}
+      .price-card.featured{transform:none}
+      .cases{grid-template-columns:1fr}
+      .cta{padding:30px;align-items:flex-start;flex-direction:column}
+      .cta:after{opacity:.3}
+      .qualifier{right:16px;bottom:16px}
+      .qualifier-toggle{width:58px;height:58px}
+      .options{grid-template-columns:1fr}
+    }
+    @media (max-width:430px){
+      body{
+        background:#f6f2eb;
+        padding-bottom:calc(86px + env(safe-area-inset-bottom));
+        -webkit-tap-highlight-color:transparent;
+      }
+      .header{
+        top:0;
+        padding-top:env(safe-area-inset-top);
+      }
+      .nav{
+        height:60px;
+      }
+      .brand{
+        font-size:21px;
+      }
+      .hero{
+        padding:28px 0 18px;
+      }
+      .eyebrow{
+        font-size:10px;
+        line-height:1.55;
+        letter-spacing:.12em;
+      }
+      h1{
+        font-size:34px;
+        letter-spacing:-.026em;
+      }
+      .lead{
+        font-size:15px;
+        line-height:1.62;
+        margin-bottom:22px;
+      }
+      .hero-art{
+        height:auto;
+        min-height:0;
+        transform:none;
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:10px;
+        margin-top:6px;
+      }
+      .shape{
+        display:none;
+      }
+      .line-card{
+        position:static;
+        width:auto;
+        min-height:76px;
+        border-radius:10px;
+        background:rgba(255,253,248,.82);
+      }
+      .line-card b{
+        font-size:16px;
+      }
+      .line-card span{
+        font-size:10px;
+      }
+      .trust-grid,
+      .service-grid,
+      .audience-grid{
+        grid-template-columns:1fr;
+      }
+      .mini-card{
+        min-height:auto;
+        padding:18px;
+        background:rgba(255,253,248,.74);
+      }
+      .mini-card .icon{
+        margin-bottom:18px;
+      }
+      .section-head{
+        display:block;
+      }
+      .section-head p,
+      .pricing-intro p{
+        margin-top:12px;
+      }
+      .pricing-intro{
+        padding:0;
+      }
+      .price-card{
+        padding:24px;
+        background:rgba(255,253,248,.78);
+      }
+      .price{
+        font-size:23px;
+      }
+      .case{
+        min-height:190px;
+      }
+      .cta{
+        margin-bottom:24px;
+        padding:26px;
+      }
+      footer{
+        padding-bottom:24px;
+      }
+      .qualifier{
+        inset:auto 0 0 0;
+        width:100%;
+        bottom:0;
+        pointer-events:none;
+      }
+      .qualifier.open{
+        pointer-events:auto;
+      }
+      .qualifier-panel{
+        margin:0;
+        border-radius:18px 18px 0 0;
+        max-height:calc(92vh - env(safe-area-inset-top));
+        overflow:auto;
+        padding:22px 18px calc(22px + env(safe-area-inset-bottom));
+        box-shadow:0 -24px 70px rgba(24,30,26,.24);
+      }
+      .qualifier.open:before{
+        content:"";
+        position:fixed;
+        inset:0;
+        background:rgba(17,23,19,.42);
+        z-index:-1;
+      }
+      .qualifier-toggle{
+        display:none;
+      }
+      .q-title{
+        font-size:20px;
+      }
+      .q-footer{
+        position:sticky;
+        bottom:calc(-22px - env(safe-area-inset-bottom));
+        margin:18px -18px calc(-22px - env(safe-area-inset-bottom));
+        padding:12px 18px calc(12px + env(safe-area-inset-bottom));
+        background:rgba(251,250,247,.96);
+        border-top:1px solid var(--line);
+      }
+      .q-footer .btn{
+        min-height:48px;
+      }
+      .option,
+      .q-field{
+        min-height:48px;
+      }
+      .toast{
+        width:calc(100% - 28px);
+        bottom:calc(92px + env(safe-area-inset-bottom));
+        text-align:center;
+        border-radius:12px;
+      }
+      .toast.show{
+        bottom:calc(102px + env(safe-area-inset-bottom));
+      }
+      .mobile-action-bar{
+        position:fixed;
+        left:0;
+        right:0;
+        bottom:0;
+        z-index:90;
+        display:grid;
+        grid-template-columns:52px 1fr;
+        gap:10px;
+        padding:10px 14px calc(10px + env(safe-area-inset-bottom));
+        background:rgba(255,253,248,.94);
+        border-top:1px solid var(--line);
+        backdrop-filter:blur(18px);
+      }
+      .mobile-action-bar .btn{
+        min-height:50px;
+        border-radius:12px;
+      }
+      .mobile-action-bar .call-btn{
+        padding:0;
+        font-size:19px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+  <header class="header" id="header">
+    <div class="container nav">
+      <a class="brand" href="#top">AL’TERA <small>экспертная бухгалтерия</small></a>
+      <nav class="links">
+        <a href="#services">Услуги</a><a href="#cases">Кейсы</a><a href="#pricing">Тарифы</a><a href="#about">О компании</a><a href="#faq">FAQ</a><a href="#contacts">Контакты</a>
+      </nav>
+      <div class="nav-actions"><a class="phone" href="tel:+78005554565">8 (800) 555-45-65</a><button class="btn" id="loginBtn">Личный кабинет →</button></div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Экспертность. Технологии. Спокойствие.</div>
+          <h1>Бухгалтерия нового поколения <strong>для бизнеса,</strong> который смотрит вперёд</h1>
+          <p class="lead">Налоговая экспертиза, международный опыт и современные технологии — для вашего спокойствия и роста.</p>
+          <div class="hero-actions"><button class="btn btn-primary open-qualifier">Начать тестовый месяц — 10 000 ₽</button><button class="btn open-qualifier">Пройти первичную квалификацию</button></div>
+        </div>
+        <div class="hero-art" aria-label="Декоративная композиция">
+          <div class="shape disc"></div><div class="shape block"></div><div class="shape glass"></div>
+          <div class="line-card lc1"><i>◴</i><div><b>10+ лет</b><span>опыта</span></div></div>
+          <div class="line-card lc2"><i>⌂</i><div><b>300+</b><span>клиентов</span></div></div>
+          <div class="line-card lc3"><i>◫</i><div><b>Big4</b><span>подход</span></div></div>
+          <div class="line-card lc4"><i>○</i><div><b>0</b><span>штрафов</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about"><div class="container"><div class="section-head"><h2>Почему нам доверяют</h2></div><div class="trust-grid">
+      <div class="mini-card"><div class="icon">♜</div><b>Опыт PwC и Big4</b><p>Позиция мирового консалтинга.</p></div>
+      <div class="mini-card"><div class="icon">▣</div><b>Фиксированные тарифы</b><p>Понятные условия без скрытых доплат.</p></div>
+      <div class="mini-card"><div class="icon">♢</div><b>Налоговые юристы</b><p>Снижаем риски, а не просто сдаём отчётность.</p></div>
+      <div class="mini-card"><div class="icon">♕</div><b>AI и автоматизация</b><p>Минимизируем ручную работу и ошибки.</p></div>
+      <div class="mini-card"><div class="icon">◌</div><b>Быстрый сервис</b><p>Отвечаем быстро и без бюрократии.</p></div>
+      <div class="mini-card"><div class="icon">♙</div><b>Личный бухгалтер</b><p>Вы всегда знаете, кто ведёт ваш бизнес.</p></div>
+    </div></div></section>
+
+    <section><div class="container"><div class="section-head"><h2>Как начинается сотрудничество</h2></div><div class="steps">
+      <div class="step"><div class="step-num">1</div><b>Квалификация</b><p>Заполняете короткую анкету. Мы изучаем ваш бизнес.</p></div>
+      <div class="step"><div class="step-num">2</div><b>Первый месяц</b><p>Работаем с вами в полном объёме за 10 000 ₽.</p></div>
+      <div class="step"><div class="step-num">3</div><b>Анализ</b><p>Фиксируем операции, процессы и особенности бизнеса.</p></div>
+      <div class="step"><div class="step-num">4</div><b>Отчёт</b><p>Показываем выявленные риски и рекомендации.</p></div>
+      <div class="step"><div class="step-num">5</div><b>Тариф</b><p>Формируем честную стоимость сопровождения.</p></div>
+      <div class="step"><div class="step-num">6</div><b>Постоянная работа</b><p>Продолжаем сотрудничество или вы выбираете другое решение.</p></div>
+    </div></div></section>
+
+    <section><div class="container"><div class="section-head"><h2>Для кого мы работаем</h2></div><div class="audience-grid">
+      <div class="mini-card"><div class="icon">◩</div><b>IT-компании</b><p>Специфика и поддержка роста.</p></div><div class="mini-card"><div class="icon">♜</div><b>Производство</b><p>Учёт и оптимизация издержек.</p></div><div class="mini-card"><div class="icon">▤</div><b>Торговля и e-commerce</b><p>Контроль оборотов и остатков.</p></div><div class="mini-card"><div class="icon">♙</div><b>Услуги и консалтинг</b><p>Прозрачность и порядок.</p></div><div class="mini-card"><div class="icon">♙</div><b>Международный бизнес</b><p>ВЭД и валютный контроль.</p></div>
+    </div></div></section>
+
+    <section id="services"><div class="container"><div class="section-head"><h2>Наши услуги</h2><a href="#contacts">Смотреть все услуги →</a></div><div class="service-grid">
+      <div class="mini-card"><b>Бухгалтерское сопровождение</b></div><div class="mini-card"><b>Налоговое сопровождение</b></div><div class="mini-card"><b>Кадровый учёт и расчёт зарплаты</b></div><div class="mini-card"><b>Международный учёт и ВЭД</b></div><div class="mini-card"><b>Восстановление учёта</b></div><div class="mini-card"><b>Финансовый консалтинг</b></div>
+    </div></div></section>
+
+    <section id="pricing"><div class="container"><div class="pricing">
+      <div class="pricing-intro"><h2>Тарифы</h2><p>Окончательная стоимость формируется после первого месяца сотрудничества и оценки реального объёма задач.</p><button class="btn open-qualifier">Получить предложение</button></div>
+      <div class="price-card"><h3>START</h3><small>Для ИП и малого бизнеса</small><div class="price">от 15 000 ₽/мес</div><ul><li>Личный бухгалтер</li><li>Быстрые ответы</li><li>Фиксированная цена</li><li>Онлайн-доступ</li></ul></div>
+      <div class="price-card featured"><div class="badge">ПОПУЛЯРНЫЙ</div><h3>BUSINESS</h3><small>Для компаний с регулярными операциями</small><div class="price">от 30 000 ₽/мес</div><ul><li>Личный бухгалтер</li><li>Быстрые ответы</li><li>Фиксированная цена</li><li>Онлайн-доступ</li></ul></div>
+      <div class="price-card"><h3>EXPERT</h3><small>Для международных и сложных кейсов</small><div class="price">от 60 000 ₽/мес</div><ul><li>Личный бухгалтер</li><li>Быстрые ответы</li><li>Фиксированная цена</li><li>Онлайн-доступ</li></ul></div>
+    </div></div></section>
+
+    <section id="cases"><div class="container bottom-grid"><div><div class="section-head"><h2>Кейсы наших клиентов</h2></div><div class="cases"><div class="case"><span>IT-КОМПАНИЯ</span><b>Снизили налоговые риски на 32%</b></div><div class="case"><span>РЕСТОРАНЫ</span><b>Навели порядок в кадровом и зарплатном учёте</b></div><div class="case"><span>МЕЖДУНАРОДНЫЙ БИЗНЕС</span><b>Настроили прозрачную финансовую структуру</b></div></div></div>
+      <div id="faq"><div class="section-head"><h2>Частые вопросы</h2></div><div class="faq">
+        <div class="faq-item"><button class="faq-q">Сколько стоит бухгалтерия?<span>+</span></button><div class="faq-a">Стоимость зависит от объёма операций, количества сотрудников и необходимых услуг. Финальная цена фиксируется после первичной квалификации.</div></div>
+        <div class="faq-item"><button class="faq-q">Как перейти от текущего бухгалтера?<span>+</span></button><div class="faq-a">Мы составим план передачи дел, проверим базу и документы, после чего организуем безопасный переход без остановки работы.</div></div>
+        <div class="faq-item"><button class="faq-q">Кто отвечает за ошибки?<span>+</span></button><div class="faq-a">Ответственность и порядок взаимодействия фиксируются в договоре. Мы также ведём журнал действий и контрольные точки.</div></div>
+        <div class="faq-item"><button class="faq-q">Можно ли работать удалённо?<span>+</span></button><div class="faq-a">Да. Документы, коммуникация и отчётность могут полностью вестись онлайн.</div></div>
+      </div></div></div></section>
+
+    <div class="container"><div class="cta" id="contacts"><h2>Бухгалтерия должна помогать бизнесу, а не создавать стресс</h2><button class="btn open-qualifier">Пройти первичную квалификацию →</button></div></div>
+  </main>
+  <footer><div class="container footer-row"><div>© 2026 AL’TERA</div><div>Санкт-Петербург · 8 (800) 555-45-65 · info@altera-finance.ru</div></div></footer>
+</div>
+
+<div class="mobile-action-bar" aria-label="Быстрые действия">
+  <a class="btn call-btn" href="tel:+78005554565" aria-label="Позвонить">☎</a>
+  <button class="btn btn-primary open-qualifier">Получить расчет</button>
+</div>
+
+<div class="qualifier" id="qualifier">
+  <div class="qualifier-panel">
+    <div style="display:flex;justify-content:space-between;gap:14px;align-items:start"><div><p class="q-note" id="stepLabel">Шаг 1 из 7</p><h3 class="q-title" id="qTitle">Расскажите о компании</h3></div><button id="closeQualifier" style="border:0;background:none;font-size:20px;cursor:pointer">×</button></div>
+    <div class="progress"><span id="progressBar"></span></div>
+    <div id="qBody"></div>
+    <div class="q-footer"><button class="btn" id="backBtn">Назад</button><button class="btn btn-primary" id="nextBtn">Далее</button></div>
+  </div>
+  <button class="qualifier-toggle" id="qualifierToggle" aria-label="Открыть анкету">↗</button>
+</div>
+<div class="toast" id="toast">Прототип: данные формы сохранены локально</div>
+
+<script>
+  const header=document.getElementById('header');
+  addEventListener('scroll',()=>header.classList.toggle('scrolled',scrollY>10));
+  document.querySelectorAll('.faq-q').forEach(btn=>btn.addEventListener('click',()=>btn.parentElement.classList.toggle('open')));
+
+  const qualifier=document.getElementById('qualifier');
+  const openQualifier=()=>qualifier.classList.add('open');
+  document.getElementById('qualifierToggle').onclick=()=>qualifier.classList.toggle('open');
+  document.getElementById('closeQualifier').onclick=()=>qualifier.classList.remove('open');
+  document.querySelectorAll('.open-qualifier').forEach(b=>b.onclick=openQualifier);
+  document.querySelectorAll('.line-card,.mini-card,.case,.price-card').forEach(card=>{
+    card.setAttribute('role','button');
+    card.setAttribute('tabindex','0');
+    card.addEventListener('click',openQualifier);
+    card.addEventListener('keydown',event=>{
+      if(event.key==='Enter'||event.key===' '){
+        event.preventDefault();
+        openQualifier();
+      }
+    });
+  });
+  document.getElementById('loginBtn').onclick=()=>alert('Личный кабинет будет подключён на следующем этапе.');
+
+  const questions=[
+    {title:'Расскажите о компании',type:'options',options:['ООО','ИП','АО','Другое']},
+    {title:'Основной вид деятельности',type:'select',options:['IT и разработка','Торговля и e-commerce','Услуги и консалтинг','Производство','Международный бизнес','Другое']},
+    {title:'Сколько сотрудников в компании?',type:'options',options:['Нет сотрудников','1–5','6–15','16–30','Более 30']},
+    {title:'Как сейчас ведётся бухгалтерия?',type:'options',options:['Штатный бухгалтер','Аутсорсинг','Самостоятельно','Нужно восстановить учёт']},
+    {title:'Какие услуги вам нужны?',type:'options',multi:true,options:['Бухгалтерия','Налоги','Зарплата и кадры','ВЭД','Консультации','Пока не знаю']},
+    {title:'Когда хотите начать?',type:'options',options:['Как можно скорее','В течение недели','В течение месяца','Пока изучаю варианты']},
+    {title:'Контактная информация',type:'contact'}
+  ];
+  let step=0; const answers={};
+  const qBody=document.getElementById('qBody'), qTitle=document.getElementById('qTitle'), stepLabel=document.getElementById('stepLabel'), progressBar=document.getElementById('progressBar'), backBtn=document.getElementById('backBtn'), nextBtn=document.getElementById('nextBtn'), toast=document.getElementById('toast');
+
+  function render(){
+    const q=questions[step];qTitle.textContent=q.title;stepLabel.textContent=`Шаг ${step+1} из ${questions.length}`;progressBar.style.width=`${((step+1)/questions.length)*100}%`;backBtn.style.visibility=step?'visible':'hidden';nextBtn.textContent=step===questions.length-1?'Отправить заявку':'Далее';qBody.innerHTML='';
+    if(q.type==='options'){
+      const wrap=document.createElement('div');wrap.className='options';q.options.forEach(opt=>{const b=document.createElement('button');b.className='option';b.textContent=opt;const val=answers[step];if(Array.isArray(val)?val.includes(opt):val===opt)b.classList.add('selected');b.onclick=()=>{if(q.multi){const arr=Array.isArray(answers[step])?[...answers[step]]:[];const i=arr.indexOf(opt);i>=0?arr.splice(i,1):arr.push(opt);answers[step]=arr}else{answers[step]=opt;wrap.querySelectorAll('.option').forEach(x=>x.classList.remove('selected'));b.classList.add('selected')}render();};wrap.appendChild(b)});qBody.appendChild(wrap);
+    }
+    if(q.type==='select'){
+      const s=document.createElement('select');s.className='q-field';s.innerHTML='<option value="">Выберите вариант</option>'+q.options.map(o=>`<option ${answers[step]===o?'selected':''}>${o}</option>`).join('');s.onchange=e=>answers[step]=e.target.value;qBody.appendChild(s);
+    }
+    if(q.type==='contact'){
+      const data=answers[step]||{};['Имя','Телефон','E-mail'].forEach((name,i)=>{const input=document.createElement('input');input.className='q-field';input.placeholder=name;input.value=data[name]||'';input.type=i===1?'tel':i===2?'email':'text';input.oninput=e=>{answers[step]={...(answers[step]||{}),[name]:e.target.value};localStorage.setItem('alteraLeadDraft',JSON.stringify(answers));};qBody.appendChild(input)});
+      const p=document.createElement('p');p.className='q-note';p.style.marginTop='12px';p.textContent='Нажимая «Отправить заявку», вы соглашаетесь на обработку персональных данных.';qBody.appendChild(p);
+    }
+  }
+  backBtn.onclick=()=>{if(step>0){step--;render()}};
+  nextBtn.onclick=()=>{
+    if(step<questions.length-1){if(!answers[step]||Array.isArray(answers[step])&&!answers[step].length){toast.textContent='Выберите вариант ответа';toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),1800);return;}step++;render();localStorage.setItem('alteraLeadDraft',JSON.stringify(answers));}
+    else{
+      const contact=answers[step]||{};if(!contact['Имя']||!contact['Телефон']){toast.textContent='Укажите имя и телефон';toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),1800);return;}
+      qTitle.textContent='Спасибо за Ваше обращение!';stepLabel.textContent='Заявка отправлена';progressBar.style.width='100%';qBody.innerHTML='<div style="padding:20px 0"><div style="width:52px;height:52px;border-radius:50%;background:#0b4a3b;color:white;display:grid;place-items:center;font-size:24px;margin-bottom:16px">✓</div><div style="padding:20px 22px;margin-bottom:20px;border:1px solid rgba(11,74,59,.18);border-radius:16px;background:#f1f6f3"><p style="margin:0 0 7px;font-size:13px;line-height:1.4;color:#5f665f;text-transform:uppercase;letter-spacing:.04em">Стоимость тестового месяца для Вашей компании</p><p style="margin:0;font-size:30px;line-height:1.15;font-weight:750;color:#0b4a3b">10 000 ₽ в месяц</p></div><p style="margin:0 0 14px;line-height:1.6;color:#5f665f">В течение тестового периода мы подробно изучим особенности работы Вашей организации и определим необходимый перечень услуг, который поможет сделать бизнес более эффективным.</p><p style="margin:0 0 14px;line-height:1.6;color:#5f665f">На указанную Вами электронную почту будет направлен шаблон договора для ознакомления и заключения.</p><p style="margin:0;line-height:1.6;color:#5f665f">Для уточнения вопросов свяжитесь с менеджером: <a href="tel:+79999999999" style="color:#0b4a3b;font-weight:700;text-decoration:none;white-space:nowrap">+7 999 999 99 99</a>.</p></div>';backBtn.style.display='none';nextBtn.textContent='Закрыть';nextBtn.onclick=()=>qualifier.classList.remove('open');localStorage.setItem('alteraSubmittedLead',JSON.stringify({answers,createdAt:new Date().toISOString()}));toast.textContent='Заявка сохранена в браузере';toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),2200);
+    }
+  };
+  try{Object.assign(answers,JSON.parse(localStorage.getItem('alteraLeadDraft')||'{}'))}catch(e){}
+  render();
+</script>
+</body>
+</html>
+
+

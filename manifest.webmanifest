@@ -1,0 +1,17 @@
+﻿{
+  "name": "AL'TERA",
+  "short_name": "AL'TERA",
+  "description": "Бухгалтерия нового поколения для бизнеса.",
+  "start_url": "./altera-iphone-webapp.html",
+  "display": "standalone",
+  "background_color": "#f6f2eb",
+  "theme_color": "#0a4739",
+  "icons": [
+    {
+      "src": "./altera-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
