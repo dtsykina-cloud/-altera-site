@@ -637,6 +637,127 @@
         background-size:138%;
       }
     }
+
+    /* Luxury cover refinement */
+    .hero{
+      min-height:calc(100vh - 78px);
+      border-bottom-color:rgba(25,28,26,.08);
+      background:
+        linear-gradient(90deg,rgba(255,253,248,.99) 0%,rgba(255,253,248,.91) 39%,rgba(255,253,248,.62) 56%,rgba(255,253,248,.34) 100%),
+        radial-gradient(circle at 78% 48%,rgba(226,216,199,.42),transparent 29%),
+        linear-gradient(180deg,#fffdf8,#f5eee4);
+    }
+    .hero-grid{
+      grid-template-columns:minmax(440px,.73fr) minmax(560px,1.27fr);
+      gap:30px;
+      padding:34px 0 42px;
+    }
+    .hero-grid > div:first-child{
+      max-width:650px;
+    }
+    .hero-grid > div:first-child:before{
+      content:"AL'TERA";
+      display:block;
+      margin:0 0 18px -4px;
+      font-family:Georgia,"Times New Roman",serif;
+      font-size:86px;
+      line-height:.86;
+      letter-spacing:.075em;
+      font-weight:400;
+      color:#1f2421;
+    }
+    .eyebrow{
+      margin-bottom:18px;
+      color:#0a604b;
+      letter-spacing:.16em;
+    }
+    h1{
+      max-width:600px;
+      margin-bottom:22px;
+      font-size:56px;
+      line-height:1.04;
+    }
+    .lead{
+      max-width:485px;
+      margin-bottom:30px;
+      font-size:15px;
+    }
+    .hero-actions{
+      gap:14px;
+      margin-bottom:32px;
+    }
+    .hero-actions .btn{
+      min-height:50px;
+      padding:0 25px;
+    }
+    .hero-stats{
+      max-width:480px;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:12px;
+    }
+    .hero-stats .stat:last-child{display:none}
+    .stat{
+      min-height:86px;
+      padding:18px 17px;
+      border-radius:9px;
+      background:rgba(255,253,248,.82);
+    }
+    .stat b{font-size:25px}
+    .hero-art{
+      min-height:610px;
+      margin-right:-56px;
+      background-size:contain;
+      background-position:center right;
+    }
+    @media (max-width:1180px){
+      .hero-grid{
+        grid-template-columns:1fr;
+        gap:20px;
+        padding:44px 0 38px;
+      }
+      .hero-grid > div:first-child:before{
+        font-size:72px;
+      }
+      h1{font-size:50px}
+      .hero-art{
+        min-height:420px;
+        margin-right:0;
+        background-position:center;
+      }
+    }
+    @media (max-width:760px){
+      .hero-grid{padding:30px 0 24px}
+      .hero-grid > div:first-child:before{
+        font-size:49px;
+        letter-spacing:.06em;
+        margin-bottom:16px;
+      }
+      h1{font-size:37px}
+      .lead{font-size:14px;margin-bottom:24px}
+      .hero-actions{margin-bottom:24px}
+      .hero-stats{
+        max-width:none;
+        grid-template-columns:repeat(3,minmax(0,1fr));
+        gap:8px;
+      }
+      .stat{
+        min-height:72px;
+        padding:12px 10px;
+      }
+      .stat b{font-size:20px}
+      .stat span{font-size:10px}
+      .hero-art{
+        min-height:285px;
+        background-size:124%;
+      }
+    }
+    @media (max-width:430px){
+      .hero-grid > div:first-child:before{font-size:41px}
+      h1{font-size:33px}
+      .hero-stats{grid-template-columns:repeat(3,minmax(0,1fr))}
+      .stat{min-height:68px;padding:11px 8px}
+      .hero-art{min-height:235px;background-size:145%}
+    }
   </style>
 </head>
 <body>
