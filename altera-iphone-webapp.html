@@ -331,26 +331,25 @@
     .process-step b{display:block;font-size:13px;margin-bottom:5px}
     .process-step span{font-size:11px;color:var(--muted);line-height:1.45}
     .cases-faq{display:grid;grid-template-columns:1.48fr .82fr;gap:18px;margin-top:18px}
-    .cases-panel{min-height:390px}
+    .cases-panel{min-height:390px;background:rgba(255,255,255,.42)}
     .cases-head{display:flex;justify-content:space-between;gap:20px;align-items:start;margin-bottom:22px}
     .cases-head a{white-space:nowrap;font-size:12px}
     .cases-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:0}
     .case{
-      min-height:254px;
+      min-height:276px;
       border-radius:12px;
       border:1px solid var(--line);
-      background:
-        radial-gradient(circle at 76% 78%,rgba(255,255,255,.88) 0 58px,transparent 59px),
-        linear-gradient(135deg,#f6f1ea,#e7ded2);
-      padding:18px;
+      background:#f7f3ed;
+      padding:16px;
       position:relative;
       overflow:hidden;
       display:flex;
       flex-direction:column;
+      box-shadow:0 18px 38px rgba(36,31,25,.06);
     }
     .case:nth-child(2){
       background:
-        linear-gradient(180deg,rgba(17,18,19,.08),rgba(17,18,19,.44)),
+        linear-gradient(180deg,rgba(17,18,19,.08),rgba(17,18,19,.58)),
         url("./assets/altera-abstract-section.png") center/cover;
       color:#fff;
     }
@@ -361,34 +360,46 @@
       color:#fff;
     }
     .case:after{
-      content:"";position:absolute;right:-18px;bottom:-34px;width:132px;height:132px;border-radius:50%;
-      background:rgba(255,255,255,.42);
+      content:"";position:absolute;right:-36px;bottom:-46px;width:142px;height:142px;border-radius:50%;
+      background:rgba(255,255,255,.55);
       z-index:0;
     }
     .case > *{position:relative;z-index:1}
-    .case span{display:inline-block;align-self:flex-start;font-size:9px;text-transform:uppercase;border:1px solid currentColor;border-radius:999px;padding:5px 8px;margin-bottom:14px;opacity:.76}
-    .case b{display:block;font-size:13px;line-height:1.35;max-width:210px}
-    .case p{margin:10px 0 0;color:var(--muted);font-size:20px;font-weight:750;letter-spacing:-.04em}
+    .case span{display:inline-block;align-self:flex-start;font-size:9px;text-transform:uppercase;border:1px solid currentColor;border-radius:999px;padding:5px 8px;margin-bottom:16px;opacity:.72}
+    .case b{display:block;font-size:13px;line-height:1.38;max-width:210px;font-weight:650}
+    .case p{margin:12px 0 0;color:#17201c;font-size:13px;line-height:1.35;font-weight:650;letter-spacing:-.02em;max-width:190px}
     .case:nth-child(2) p,.case:nth-child(3) p{color:#fff}
-    .case-visual{margin-top:auto;height:86px;border-radius:10px;overflow:hidden;position:relative}
-    .case-visual.chart{
+    .case-visual{margin-top:auto;height:108px;border-radius:10px;overflow:hidden;position:relative}
+    .case-visual.laptop{
       background:
-        linear-gradient(135deg,rgba(255,255,255,.85),rgba(230,224,214,.34)),
-        repeating-linear-gradient(90deg,transparent 0 22px,rgba(12,64,55,.16) 22px 23px);
+        radial-gradient(circle at 78% 22%,rgba(13,86,70,.14),transparent 28%),
+        linear-gradient(135deg,#fbfaf6,#ebe2d6);
     }
-    .case-visual.chart:before{
-      content:"";position:absolute;left:18px;right:20px;bottom:18px;height:54px;
-      background:linear-gradient(135deg,transparent 0 42%,rgba(13,86,70,.8) 43% 46%,transparent 47%);
-      border-bottom:1px solid rgba(13,86,70,.34);
+    .case-visual.laptop:before{
+      content:"";position:absolute;left:22px;right:22px;top:18px;height:54px;border-radius:6px 6px 2px 2px;
+      background:
+        linear-gradient(135deg,transparent 0 46%,rgba(11,82,66,.75) 47% 50%,transparent 51%),
+        repeating-linear-gradient(90deg,transparent 0 18px,rgba(11,82,66,.13) 18px 20px),
+        #f8f6f1;
+      border:1px solid rgba(29,48,40,.16);
+      box-shadow:0 16px 20px rgba(35,29,23,.12);
+    }
+    .case-visual.laptop:after{
+      content:"";position:absolute;left:40px;right:40px;top:74px;height:8px;border-radius:0 0 12px 12px;
+      background:linear-gradient(90deg,#d8d0c5,#f8f4ec,#cfc6b8);
     }
     .case-visual.photo{
-      background:linear-gradient(135deg,rgba(25,24,22,.2),rgba(0,0,0,.62)),url("./assets/altera-premium-hero.png") center/cover;
+      background:
+        linear-gradient(135deg,rgba(25,24,22,.08),rgba(0,0,0,.64)),
+        url("./assets/altera-premium-hero.png") center/cover;
     }
     .case-visual.map{
       background:
-        radial-gradient(circle at 26% 34%,rgba(218,206,183,.55),transparent 2px),
-        radial-gradient(circle at 64% 44%,rgba(218,206,183,.5),transparent 2px),
-        radial-gradient(circle at 72% 70%,rgba(218,206,183,.5),transparent 2px),
+        radial-gradient(circle at 26% 34%,rgba(218,206,183,.7),transparent 2px),
+        radial-gradient(circle at 64% 44%,rgba(218,206,183,.7),transparent 2px),
+        radial-gradient(circle at 72% 70%,rgba(218,206,183,.7),transparent 2px),
+        linear-gradient(35deg,transparent 0 48%,rgba(218,206,183,.22) 49% 50%,transparent 51%),
+        linear-gradient(-22deg,transparent 0 54%,rgba(218,206,183,.18) 55% 56%,transparent 57%),
         linear-gradient(145deg,#0f1720,#102b2b);
     }
     .case-arrow{position:absolute;left:18px;bottom:18px;background:#fff;color:#101010;z-index:2}
@@ -619,22 +630,22 @@
           <div class="cases-row">
             <div class="case">
               <span>IT-компания</span>
-              <b>Снизили налоговые риски и автоматизировали отчётность</b>
-              <p>-32%</p>
-              <div class="case-visual chart"></div>
+              <b>Оптимизация налоговой нагрузки для IT-компании</b>
+              <p>-32% налоговых рисков за 12 месяцев</p>
+              <div class="case-visual laptop"></div>
               <div class="case-arrow">→</div>
             </div>
             <div class="case">
-              <span>Ресторан</span>
-              <b>Навели порядок в кадровом и зарплатном учёте</b>
-              <p>ошибки -90%</p>
+              <span>Ресторанный бизнес</span>
+              <b>Построение управленческого учёта для сети ресторанов</b>
+              <p>ошибки в зарплате снижены на 90%</p>
               <div class="case-visual photo"></div>
               <div class="case-arrow">→</div>
             </div>
             <div class="case">
               <span>Международный бизнес</span>
-              <b>Настроили прозрачную структуру и валютные операции</b>
-              <p>3 страны</p>
+              <b>Выход на новые рынки с минимальными рисками</b>
+              <p>3 страны сопровождаем одновременно</p>
               <div class="case-visual map"></div>
               <div class="case-arrow">→</div>
             </div>
