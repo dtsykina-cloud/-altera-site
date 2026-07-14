@@ -128,8 +128,8 @@
     .hero-object{display:none}
     .hero-scene{
       position:absolute;
-      inset:0 132px 0 -8px;
-      background:url("./assets/altera-hero-render-v2.png") center/contain no-repeat;
+      inset:-3% 96px -3% -54px;
+      background:url("./assets/altera-hero-render-v2.png") center/112% auto no-repeat;
       filter:drop-shadow(0 34px 50px rgba(37,32,27,.12));
       animation:floatObject 14s ease-in-out infinite;
       transform-origin:center;
@@ -226,8 +226,8 @@
     .scene-plus.p2{left:87%;top:60%}
     .scene-plus.p3{left:16%;bottom:18%}
     @keyframes floatObject{
-      0%,100%{transform:translate3d(0,0,0) scale(1)}
-      50%{transform:translate3d(-6px,-9px,0) scale(1.01)}
+      0%,100%{transform:translate3d(0,0,0) scaleX(1.12) scaleY(.96)}
+      50%{transform:translate3d(-6px,-9px,0) scaleX(1.14) scaleY(.97)}
     }
     .hero-metrics{
       display:grid;
@@ -330,18 +330,23 @@
     }
     .process-step b{display:block;font-size:13px;margin-bottom:5px}
     .process-step span{font-size:11px;color:var(--muted);line-height:1.45}
-    .cases-faq{display:grid;grid-template-columns:1.4fr .9fr;gap:18px;margin-top:18px}
-    .cases-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px}
+    .cases-faq{display:grid;grid-template-columns:1.48fr .82fr;gap:18px;margin-top:18px}
+    .cases-panel{min-height:390px}
+    .cases-head{display:flex;justify-content:space-between;gap:20px;align-items:start;margin-bottom:22px}
+    .cases-head a{white-space:nowrap;font-size:12px}
+    .cases-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:0}
     .case{
-      min-height:176px;
+      min-height:254px;
       border-radius:12px;
       border:1px solid var(--line);
       background:
-        radial-gradient(circle at 86% 92%,rgba(255,255,255,.72) 0 35px,transparent 36px),
+        radial-gradient(circle at 76% 78%,rgba(255,255,255,.88) 0 58px,transparent 59px),
         linear-gradient(135deg,#f6f1ea,#e7ded2);
       padding:18px;
       position:relative;
       overflow:hidden;
+      display:flex;
+      flex-direction:column;
     }
     .case:nth-child(2){
       background:
@@ -356,12 +361,37 @@
       color:#fff;
     }
     .case:after{
-      content:"";position:absolute;right:-22px;bottom:-36px;width:124px;height:124px;border-radius:50%;
-      background:rgba(255,255,255,.45);
+      content:"";position:absolute;right:-18px;bottom:-34px;width:132px;height:132px;border-radius:50%;
+      background:rgba(255,255,255,.42);
+      z-index:0;
     }
-    .case span{display:inline-block;font-size:9px;text-transform:uppercase;border:1px solid var(--line);border-radius:999px;padding:5px 8px;margin-bottom:14px}
-    .case b{display:block;font-size:13px;line-height:1.35;max-width:170px}
-    .case-arrow{position:absolute;left:18px;bottom:18px;background:#fff}
+    .case > *{position:relative;z-index:1}
+    .case span{display:inline-block;align-self:flex-start;font-size:9px;text-transform:uppercase;border:1px solid currentColor;border-radius:999px;padding:5px 8px;margin-bottom:14px;opacity:.76}
+    .case b{display:block;font-size:13px;line-height:1.35;max-width:210px}
+    .case p{margin:10px 0 0;color:var(--muted);font-size:20px;font-weight:750;letter-spacing:-.04em}
+    .case:nth-child(2) p,.case:nth-child(3) p{color:#fff}
+    .case-visual{margin-top:auto;height:86px;border-radius:10px;overflow:hidden;position:relative}
+    .case-visual.chart{
+      background:
+        linear-gradient(135deg,rgba(255,255,255,.85),rgba(230,224,214,.34)),
+        repeating-linear-gradient(90deg,transparent 0 22px,rgba(12,64,55,.16) 22px 23px);
+    }
+    .case-visual.chart:before{
+      content:"";position:absolute;left:18px;right:20px;bottom:18px;height:54px;
+      background:linear-gradient(135deg,transparent 0 42%,rgba(13,86,70,.8) 43% 46%,transparent 47%);
+      border-bottom:1px solid rgba(13,86,70,.34);
+    }
+    .case-visual.photo{
+      background:linear-gradient(135deg,rgba(25,24,22,.2),rgba(0,0,0,.62)),url("./assets/altera-premium-hero.png") center/cover;
+    }
+    .case-visual.map{
+      background:
+        radial-gradient(circle at 26% 34%,rgba(218,206,183,.55),transparent 2px),
+        radial-gradient(circle at 64% 44%,rgba(218,206,183,.5),transparent 2px),
+        radial-gradient(circle at 72% 70%,rgba(218,206,183,.5),transparent 2px),
+        linear-gradient(145deg,#0f1720,#102b2b);
+    }
+    .case-arrow{position:absolute;left:18px;bottom:18px;background:#fff;color:#101010;z-index:2}
     .faq-item{border-bottom:1px solid var(--line)}
     .faq-q{width:100%;padding:17px 0;background:none;border:0;display:flex;align-items:center;justify-content:space-between;text-align:left;font-size:13px}
     .faq-a{max-height:0;overflow:hidden;color:var(--muted);font-size:12px;line-height:1.55;transition:.24s}
@@ -406,7 +436,7 @@
     @media (max-width:1180px){
       .nav{grid-template-columns:1fr auto}.menu{display:none}.nav-cta{display:block}
       .hero-grid,.modules,.wide-grid,.cases-faq,.final-cta{grid-template-columns:1fr}
-      .hero-visual{min-height:430px}.hero-scene{inset:0 126px 0 -12px}.hero-metrics{right:10px}
+      .hero-visual{min-height:430px}.hero-scene{inset:-2% 118px -2% -38px;background-size:112% auto}.hero-metrics{right:10px}
       .tariffs{grid-template-columns:1fr 1fr}.trust-panel{min-height:auto}
     }
     @media (max-width:760px){
@@ -417,7 +447,7 @@
       h1{font-size:42px;line-height:1.08}.lead{font-size:14px}
       .hero-actions .btn{width:100%}
       .hero-visual{min-height:360px;margin-top:20px}
-      .hero-scene{position:relative;inset:auto;height:280px;width:100%;transform:none;transform-origin:center top;animation:none;background-size:contain}
+      .hero-scene{position:relative;inset:auto;height:280px;width:100%;transform:none;transform-origin:center top;animation:none;background-size:118% auto;background-position:center}
       .scene-frame{left:5%;top:9%;width:78%;height:72%}
       .scene-disc{width:142px;height:142px;left:57%;top:4%}
       .scene-tower{width:122px;height:206px;left:44%;top:20%}
@@ -427,6 +457,7 @@
       .hero-metrics{position:static;grid-template-columns:repeat(3,1fr);width:auto;margin-top:14px}
       .metric{display:block}.metric i{display:none}.metric b{font-size:18px}.metric span{font-size:10px}
       .panel{min-height:auto;padding:22px}.features,.tariffs,.cases-row{grid-template-columns:1fr}
+      .cases-head{display:block}.cases-head a{display:inline-block;margin-top:14px}
       .tariff.featured{transform:none}
       .contacts{justify-self:stretch;min-width:0}.final-cta h2{font-size:29px}
       .qualifier{right:14px;bottom:90px}
@@ -582,13 +613,31 @@
 
     <section id="cases">
       <div class="container cases-faq">
-        <article class="panel">
+        <article class="panel cases-panel">
           <div class="section-num">07</div>
-          <div style="display:flex;justify-content:space-between;gap:20px;align-items:start"><h3>Кейсы наших клиентов</h3><a href="#contacts">Смотреть все кейсы →</a></div>
+          <div class="cases-head"><h3>Кейсы наших клиентов</h3><a href="#contacts">Смотреть все кейсы →</a></div>
           <div class="cases-row">
-            <div class="case"><span>IT-компания</span><b>Снизили налоговые риски на 32% и автоматизировали отчётность</b><div class="case-arrow">→</div></div>
-            <div class="case"><span>Ресторан</span><b>Навели порядок в кадровом и зарплатном учёте, ошибки на 90%</b><div class="case-arrow">→</div></div>
-            <div class="case"><span>Международный бизнес</span><b>Настроили прозрачную финансовую структуру и сопровождение валютных операций</b><div class="case-arrow">→</div></div>
+            <div class="case">
+              <span>IT-компания</span>
+              <b>Снизили налоговые риски и автоматизировали отчётность</b>
+              <p>-32%</p>
+              <div class="case-visual chart"></div>
+              <div class="case-arrow">→</div>
+            </div>
+            <div class="case">
+              <span>Ресторан</span>
+              <b>Навели порядок в кадровом и зарплатном учёте</b>
+              <p>ошибки -90%</p>
+              <div class="case-visual photo"></div>
+              <div class="case-arrow">→</div>
+            </div>
+            <div class="case">
+              <span>Международный бизнес</span>
+              <b>Настроили прозрачную структуру и валютные операции</b>
+              <p>3 страны</p>
+              <div class="case-visual map"></div>
+              <div class="case-arrow">→</div>
+            </div>
           </div>
         </article>
 
