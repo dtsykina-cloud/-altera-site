@@ -758,6 +758,69 @@
       .stat{min-height:68px;padding:11px 8px}
       .hero-art{min-height:235px;background-size:145%}
     }
+
+    /* Subtle 3D motion for the hero object */
+    .hero-grid{perspective:1300px}
+    .hero-art{
+      position:relative;
+      transform-style:preserve-3d;
+      transform:rotateX(1deg) rotateY(-5deg) translate3d(0,0,0);
+      animation:heroFloat 9s ease-in-out infinite;
+      will-change:transform,filter;
+      transition:transform .55s ease,filter .55s ease;
+    }
+    .hero-art:hover{
+      transform:rotateX(0deg) rotateY(-2deg) translate3d(-6px,-8px,28px) scale(1.015);
+      filter:drop-shadow(0 46px 66px rgba(37,42,39,.17));
+    }
+    .hero-art:before{
+      content:"";
+      position:absolute;
+      left:12%;
+      right:4%;
+      bottom:2%;
+      height:22%;
+      border-radius:50%;
+      background:radial-gradient(ellipse at center,rgba(58,62,55,.18),rgba(58,62,55,0) 68%);
+      transform:translateZ(-80px) rotateX(72deg);
+      filter:blur(10px);
+      pointer-events:none;
+    }
+    .hero-art:after{
+      content:"";
+      position:absolute;
+      inset:8% 2% 8% 18%;
+      border-radius:42% 48% 44% 46%;
+      background:linear-gradient(115deg,rgba(255,255,255,.36),rgba(255,255,255,0) 32%,rgba(7,90,70,.07) 72%,rgba(255,255,255,0));
+      mix-blend-mode:screen;
+      pointer-events:none;
+      animation:heroLight 7.5s ease-in-out infinite;
+    }
+    @keyframes heroFloat{
+      0%,100%{transform:rotateX(1deg) rotateY(-5deg) translate3d(0,0,0)}
+      50%{transform:rotateX(-1.2deg) rotateY(-2deg) translate3d(-8px,-12px,24px)}
+    }
+    @keyframes heroLight{
+      0%,100%{opacity:.34;transform:translate3d(-8px,0,32px)}
+      50%{opacity:.62;transform:translate3d(14px,-8px,46px)}
+    }
+    @media (prefers-reduced-motion:reduce){
+      .hero-art,.hero-art:after{animation:none}
+      .hero-art:hover{transform:rotateX(1deg) rotateY(-5deg)}
+    }
+    @media (max-width:760px){
+      .hero-art{
+        animation:heroFloatMobile 10s ease-in-out infinite;
+        transform:translate3d(0,0,0);
+      }
+      .hero-art:hover{transform:none}
+      .hero-art:before{bottom:-3%;height:18%}
+      .hero-art:after{inset:10% 0 12% 10%}
+      @keyframes heroFloatMobile{
+        0%,100%{transform:translate3d(0,0,0)}
+        50%{transform:translate3d(0,-8px,0)}
+      }
+    }
   </style>
 </head>
 <body>
