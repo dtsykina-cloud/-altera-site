@@ -821,6 +821,222 @@
         50%{transform:translate3d(0,-8px,0)}
       }
     }
+
+    /* Animated geometric sculpture instead of a flat image overlay */
+    .hero-art{
+      min-height:610px;
+      margin-right:-28px;
+      background:none;
+      filter:none;
+      transform:none;
+      animation:none;
+      perspective:1200px;
+      isolation:isolate;
+    }
+    .hero-art:hover{transform:none;filter:none}
+    .hero-art:after{display:none}
+    .hero-art > *{display:block}
+    .art-shadow{
+      position:absolute;
+      left:14%;
+      right:3%;
+      bottom:4%;
+      height:18%;
+      border-radius:50%;
+      background:radial-gradient(ellipse at center,rgba(44,48,42,.19),rgba(44,48,42,0) 68%);
+      filter:blur(12px);
+      transform:rotateX(72deg);
+      z-index:0;
+      pointer-events:none;
+    }
+    .art-disc{
+      position:absolute;
+      width:46%;
+      aspect-ratio:1;
+      right:4%;
+      top:6%;
+      border-radius:50%;
+      background:
+        radial-gradient(circle at 35% 28%,rgba(255,246,229,.88),transparent 25%),
+        linear-gradient(135deg,#eadcc7,#cbb898 58%,#f6eddc);
+      box-shadow:inset 0 0 0 1px rgba(122,95,55,.18),0 24px 42px rgba(69,61,48,.12);
+      transform:translateZ(-80px);
+      animation:discDrift 16s ease-in-out infinite;
+      z-index:1;
+    }
+    .art-tower{
+      position:absolute;
+      width:25%;
+      height:56%;
+      right:34%;
+      top:19%;
+      border-radius:4px;
+      background:
+        linear-gradient(110deg,rgba(255,255,255,.14),transparent 24%),
+        radial-gradient(circle at 28% 18%,rgba(255,255,255,.16),transparent 22%),
+        linear-gradient(135deg,#173b31,#082e27 58%,#061d19);
+      box-shadow:inset 0 0 0 1px rgba(255,255,255,.08),18px 22px 42px rgba(16,31,27,.18);
+      transform:rotateY(-7deg) translateZ(42px);
+      animation:towerBreath 8.8s ease-in-out infinite;
+      z-index:4;
+    }
+    .art-tower:after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(36deg,transparent 0 18%,rgba(255,255,255,.16) 18.5%,transparent 21% 42%,rgba(255,255,255,.1) 43%,transparent 46%),
+        repeating-linear-gradient(128deg,rgba(255,255,255,.08) 0 1px,transparent 1px 16px);
+      opacity:.42;
+      mix-blend-mode:screen;
+    }
+    .art-ribbed{
+      position:absolute;
+      width:28%;
+      height:42%;
+      right:15%;
+      top:36%;
+      border-radius:5px;
+      background:
+        linear-gradient(90deg,rgba(255,255,255,.62),rgba(219,210,192,.34)),
+        repeating-linear-gradient(90deg,rgba(255,255,255,.78) 0 5px,rgba(157,149,131,.28) 6px 10px,rgba(255,255,255,.18) 11px 16px);
+      box-shadow:inset 0 0 0 1px rgba(102,94,76,.18),14px 24px 40px rgba(69,61,48,.13);
+      backdrop-filter:blur(4px);
+      transform:rotateY(5deg) translateZ(76px);
+      animation:ribbedFloat 9.5s ease-in-out infinite;
+      z-index:5;
+    }
+    .art-arch{
+      position:absolute;
+      width:28%;
+      height:30%;
+      left:12%;
+      bottom:18%;
+      border-radius:9px;
+      background:
+        radial-gradient(circle at 35% 22%,rgba(255,255,255,.42),transparent 24%),
+        linear-gradient(135deg,#eadcc8,#d0bd9f 62%,#f7eedf);
+      box-shadow:inset 0 0 0 1px rgba(122,95,55,.14),14px 24px 34px rgba(69,61,48,.13);
+      transform:translateZ(58px);
+      animation:archRise 10.5s ease-in-out infinite;
+      z-index:3;
+    }
+    .art-arch:after{
+      content:"";
+      position:absolute;
+      left:29%;
+      right:29%;
+      bottom:0;
+      height:62%;
+      border-radius:999px 999px 0 0;
+      background:linear-gradient(180deg,#fffdf8,#f4eee4);
+      box-shadow:inset 0 12px 18px rgba(95,78,55,.1);
+    }
+    .art-sphere{
+      position:absolute;
+      width:13%;
+      aspect-ratio:1;
+      right:36%;
+      bottom:17%;
+      border-radius:50%;
+      background:radial-gradient(circle at 34% 24%,#fffaf0 0 18%,#e6d7c2 42%,#b99e79 100%);
+      box-shadow:inset -12px -16px 22px rgba(107,83,52,.18),0 20px 32px rgba(69,61,48,.18);
+      transform:translateZ(116px);
+      animation:sphereOrbit 7.8s ease-in-out infinite;
+      z-index:7;
+    }
+    .art-sheet{
+      position:absolute;
+      width:44%;
+      height:12%;
+      right:16%;
+      bottom:9%;
+      border-radius:2px;
+      background:linear-gradient(135deg,rgba(213,232,224,.74),rgba(255,255,255,.34));
+      border:1px solid rgba(110,139,126,.24);
+      box-shadow:0 16px 26px rgba(69,61,48,.12);
+      transform:skewX(-17deg) rotateX(58deg) translateZ(36px);
+      animation:sheetGlide 12s ease-in-out infinite;
+      z-index:2;
+    }
+    .art-branch{
+      position:absolute;
+      width:32%;
+      height:18%;
+      right:0;
+      bottom:12%;
+      transform-origin:8% 70%;
+      transform:rotate(-13deg) translateZ(130px);
+      animation:branchSway 6.8s ease-in-out infinite;
+      z-index:8;
+    }
+    .art-branch:before{
+      content:"";
+      position:absolute;
+      left:0;
+      right:2%;
+      top:50%;
+      height:2px;
+      background:#8a7a42;
+      transform:rotate(-8deg);
+      box-shadow:0 1px 0 rgba(255,255,255,.28);
+    }
+    .leaf{
+      position:absolute;
+      width:28px;
+      height:12px;
+      border-radius:100% 0 100% 0;
+      background:linear-gradient(135deg,#7f8d50,#46572f);
+      box-shadow:0 4px 8px rgba(42,48,30,.16);
+      transform-origin:left center;
+    }
+    .l1{left:22%;top:18%;transform:rotate(-24deg)}
+    .l2{left:42%;top:44%;transform:rotate(18deg)}
+    .l3{left:58%;top:8%;transform:rotate(-28deg)}
+    .l4{left:74%;top:38%;transform:rotate(18deg)}
+    @keyframes discDrift{
+      0%,100%{transform:translate3d(0,0,-80px) rotate(0deg)}
+      50%{transform:translate3d(-10px,-8px,-55px) rotate(2.5deg)}
+    }
+    @keyframes towerBreath{
+      0%,100%{transform:rotateY(-7deg) translate3d(0,0,42px)}
+      50%{transform:rotateY(-3deg) translate3d(-5px,-12px,62px)}
+    }
+    @keyframes ribbedFloat{
+      0%,100%{transform:rotateY(5deg) translate3d(0,0,76px)}
+      50%{transform:rotateY(9deg) translate3d(7px,-9px,92px)}
+    }
+    @keyframes archRise{
+      0%,100%{transform:translate3d(0,0,58px)}
+      50%{transform:translate3d(-4px,-7px,72px)}
+    }
+    @keyframes sphereOrbit{
+      0%,100%{transform:translate3d(0,0,116px) scale(1)}
+      50%{transform:translate3d(9px,-14px,138px) scale(1.035)}
+    }
+    @keyframes sheetGlide{
+      0%,100%{transform:skewX(-17deg) rotateX(58deg) translate3d(0,0,36px);opacity:.88}
+      50%{transform:skewX(-17deg) rotateX(58deg) translate3d(10px,-4px,46px);opacity:1}
+    }
+    @keyframes branchSway{
+      0%,100%{transform:rotate(-13deg) translate3d(0,0,130px)}
+      50%{transform:rotate(-9deg) translate3d(3px,-5px,142px)}
+    }
+    @media (prefers-reduced-motion:reduce){
+      .art-disc,.art-tower,.art-ribbed,.art-arch,.art-sphere,.art-sheet,.art-branch{animation:none}
+    }
+    @media (max-width:760px){
+      .hero-art{min-height:315px;margin-right:0}
+      .art-disc{width:47%;right:2%;top:2%}
+      .art-tower{width:25%;height:54%;right:35%;top:17%}
+      .art-ribbed{width:29%;height:40%;right:14%;top:35%}
+      .art-arch{width:29%;height:31%;left:10%;bottom:18%}
+      .art-branch{width:36%;right:-4%;bottom:14%}
+    }
+    @media (max-width:430px){
+      .hero-art{min-height:270px}
+      .leaf{width:20px;height:9px}
+    }
   </style>
 </head>
 <body>
