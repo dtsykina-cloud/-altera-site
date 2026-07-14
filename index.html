@@ -507,6 +507,76 @@
       .mini-card{min-height:120px}
       .mobile-action-bar .btn-primary{font-size:13px}
     }
+
+    /* Cover-style hero: the visual becomes the overview page */
+    .hero{
+      min-height:calc(100vh - 78px);
+      background:
+        linear-gradient(90deg,rgba(255,253,248,.98) 0%,rgba(255,253,248,.94) 37%,rgba(255,253,248,.3) 58%,rgba(255,253,248,.08) 100%),
+        radial-gradient(circle at 70% 46%,rgba(255,255,255,.38),transparent 30%),
+        url("./assets/altera-hero-composition.png") right center/auto 92% no-repeat,
+        linear-gradient(180deg,#fffdf8,#f4eee4);
+    }
+    .hero:before{
+      background:
+        linear-gradient(115deg,rgba(255,255,255,.62),transparent 35%),
+        radial-gradient(circle at 16% 18%,rgba(255,255,255,.95),transparent 30%);
+    }
+    .hero-grid{
+      display:block;
+      padding:74px 0 54px;
+    }
+    .hero-grid > div:first-child{
+      max-width:610px;
+      padding:22px 0;
+    }
+    .hero-art{display:none}
+    .hero-actions{margin-bottom:30px}
+    .hero-stats{
+      max-width:560px;
+      grid-template-columns:repeat(4,minmax(0,1fr));
+    }
+    .stat{
+      backdrop-filter:blur(16px);
+      background:rgba(255,253,248,.78);
+    }
+    @media (max-width:1180px){
+      .hero{
+        min-height:auto;
+        background:
+          linear-gradient(180deg,rgba(255,253,248,.98) 0%,rgba(255,253,248,.86) 64%,rgba(255,253,248,.98) 100%),
+          url("./assets/altera-hero-composition.png") center bottom/92% auto no-repeat,
+          linear-gradient(180deg,#fffdf8,#f4eee4);
+      }
+      .hero-grid{display:grid;grid-template-columns:1fr;padding:54px 0 38px}
+      .hero-grid > div:first-child{max-width:720px;padding:0}
+      .hero-art{
+        display:block;
+        min-height:390px;
+        background:none;
+        filter:none;
+      }
+    }
+    @media (max-width:760px){
+      .hero{
+        background:
+          linear-gradient(180deg,rgba(255,253,248,.99) 0%,rgba(255,253,248,.92) 58%,rgba(255,253,248,.99) 100%),
+          url("./assets/altera-hero-composition.png") center bottom/118% auto no-repeat,
+          #fffdf8;
+      }
+      .hero-grid{padding:34px 0 24px}
+      .hero-art{min-height:265px}
+      .hero-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+    }
+    @media (max-width:430px){
+      .hero{
+        background:
+          linear-gradient(180deg,rgba(255,253,248,1) 0%,rgba(255,253,248,.94) 62%,rgba(255,253,248,1) 100%),
+          url("./assets/altera-hero-composition.png") center bottom/138% auto no-repeat,
+          #fffdf8;
+      }
+      .hero-art{min-height:220px}
+    }
   </style>
 </head>
 <body>
