@@ -102,7 +102,7 @@
     h3{font-size:22px;line-height:1.15;letter-spacing:-.025em;margin:0 0 22px}
     .lead{max-width:440px;color:#4f5652;font-size:14px;line-height:1.75;margin-bottom:34px}
     .hero{padding:58px 0 44px;position:relative}
-    .hero-grid{display:grid;grid-template-columns:.78fr 1.22fr;gap:46px;align-items:center}
+    .hero-grid{display:grid;grid-template-columns:.76fr 1.24fr;gap:48px;align-items:center}
     .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
     .hero-visual{
       min-height:500px;
@@ -125,14 +125,104 @@
       filter:blur(16px);
       z-index:-1;
     }
-    .hero-object{
+    .hero-object{display:none}
+    .hero-scene{
       position:absolute;
-      inset:0;
-      background:url("./assets/altera-hero-composition.png") center/contain no-repeat;
-      filter:drop-shadow(0 34px 54px rgba(31,30,27,.12));
+      inset:4% 150px 4% 0;
+      filter:drop-shadow(0 34px 50px rgba(37,32,27,.12));
       animation:floatObject 14s ease-in-out infinite;
       transform-origin:center;
     }
+    .scene-frame{
+      position:absolute;
+      left:10%;top:9%;
+      width:74%;height:72%;
+      border:1px solid rgba(42,40,36,.14);
+      background:
+        linear-gradient(90deg,rgba(255,255,255,.44),rgba(255,255,255,0)),
+        radial-gradient(circle at 74% 28%,rgba(245,241,233,.88),transparent 31%);
+    }
+    .scene-disc{
+      position:absolute;
+      width:205px;height:205px;
+      left:57%;top:5%;
+      border-radius:50%;
+      background:
+        radial-gradient(circle at 32% 30%,rgba(255,255,255,.9),transparent 0 2px,transparent 3px),
+        radial-gradient(circle at 68% 68%,rgba(91,85,75,.13),transparent 37%),
+        linear-gradient(135deg,#eee6da,#cfc6b7);
+      box-shadow:inset 18px 18px 38px rgba(255,255,255,.42), inset -16px -18px 36px rgba(92,82,68,.12);
+      overflow:hidden;
+    }
+    .scene-disc:after,
+    .scene-tower:after,
+    .scene-cube:after{
+      content:"";position:absolute;inset:0;
+      background-image:radial-gradient(rgba(78,69,58,.22) .55px,transparent .65px);
+      background-size:10px 10px;
+      opacity:.28;
+      mix-blend-mode:multiply;
+    }
+    .scene-tower{
+      position:absolute;
+      left:45%;top:18%;
+      width:188px;height:300px;
+      border-radius:2px;
+      background:
+        linear-gradient(90deg,rgba(255,255,255,.34),transparent 18%,rgba(100,86,70,.08) 100%),
+        linear-gradient(135deg,#efe7db,#cfc4b3);
+      box-shadow:inset 16px 0 32px rgba(255,255,255,.45), inset -18px 0 36px rgba(78,66,52,.13), 0 30px 60px rgba(52,46,39,.12);
+    }
+    .scene-ribbed{
+      position:absolute;
+      left:26%;top:40%;
+      width:205px;height:205px;
+      border:1px solid rgba(45,42,37,.12);
+      background:
+        repeating-linear-gradient(90deg,rgba(224,219,209,.88) 0 7px,rgba(255,255,255,.55) 7px 12px,rgba(150,143,130,.22) 12px 15px),
+        linear-gradient(180deg,rgba(255,255,255,.72),rgba(229,222,210,.32));
+      box-shadow:inset 0 0 26px rgba(255,255,255,.5), 0 28px 48px rgba(63,56,47,.1);
+      backdrop-filter:blur(6px);
+    }
+    .scene-cube{
+      position:absolute;
+      left:36%;top:58%;
+      width:145px;height:118px;
+      background:
+        linear-gradient(110deg,rgba(255,255,255,.36),transparent 34%),
+        linear-gradient(135deg,#eadfce,#cbbfae);
+      box-shadow:inset 12px 0 26px rgba(255,255,255,.44), 0 24px 44px rgba(54,47,39,.12);
+    }
+    .scene-cube:before{
+      content:"";position:absolute;left:19%;bottom:0;width:62%;height:68%;
+      border-radius:55px 55px 0 0;
+      background:linear-gradient(180deg,#fbf8f2,#dfd3c1);
+      box-shadow:inset -11px 0 20px rgba(84,72,58,.1);
+    }
+    .scene-sphere{
+      position:absolute;
+      left:68%;top:69%;
+      width:92px;height:92px;border-radius:50%;
+      background:radial-gradient(circle at 32% 28%,#fffaf2 0 18%,#dfd3c4 58%,#b9aa97 100%);
+      box-shadow:0 24px 36px rgba(55,48,40,.13);
+    }
+    .scene-line{
+      position:absolute;
+      left:19%;bottom:16%;
+      width:115px;height:1px;
+      background:rgba(44,42,38,.18);
+      transform:rotate(-32deg);
+    }
+    .scene-plus{
+      position:absolute;
+      color:#1c2521;
+      font-size:14px;
+      font-weight:600;
+      opacity:.62;
+    }
+    .scene-plus.p1{left:14%;top:27%}
+    .scene-plus.p2{left:87%;top:60%}
+    .scene-plus.p3{left:16%;bottom:18%}
     @keyframes floatObject{
       0%,100%{transform:translate3d(0,0,0) scale(1)}
       50%{transform:translate3d(-6px,-9px,0) scale(1.01)}
@@ -160,15 +250,20 @@
     .panel{
       min-height:370px;
       border:1px solid var(--line);
-      border-radius:var(--radius);
+      border-radius:14px;
       background:rgba(255,255,255,.32);
       box-shadow:var(--shadow);
       padding:28px;
       position:relative;
       overflow:hidden;
     }
-    .panel.dark{background:linear-gradient(145deg,#062f28,#0b4237);color:#fff;border-color:rgba(255,255,255,.08)}
-    .panel.night{background:linear-gradient(145deg,#101522,#171225);color:#fff;border-color:rgba(255,255,255,.08)}
+    .panel.dark{background:linear-gradient(145deg,#052c25,#0b3d34);color:#fff;border-color:rgba(255,255,255,.08)}
+    .panel.night{background:linear-gradient(145deg,#101523,#181323);color:#fff;border-color:rgba(255,255,255,.08)}
+    .panel.dark:after,.panel.night:after{
+      content:"";position:absolute;right:-95px;top:-95px;width:240px;height:240px;border-radius:50%;
+      border:1px solid rgba(255,255,255,.18);
+      opacity:.55;
+    }
     .panel h3{max-width:350px}
     .panel.dark p,.panel.night p{color:rgba(255,255,255,.72)}
     .features{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:30px}
@@ -202,6 +297,12 @@
     }
     .service:last-child{border-bottom:0}
     .wide-grid{display:grid;grid-template-columns:1.45fr .75fr;gap:18px;margin-top:18px}
+    .wide-grid > .panel:nth-child(2):after{
+      content:"";position:absolute;right:-95px;bottom:-55px;width:230px;height:230px;border-radius:50%;
+      background:linear-gradient(145deg,rgba(223,214,201,.82),rgba(247,243,235,.44));
+      z-index:0;
+    }
+    .wide-grid > .panel:nth-child(2) > *{position:relative;z-index:1}
     .pricing-card{min-height:330px}
     .tariffs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;align-items:stretch;margin-top:20px}
     .tariff{
@@ -233,10 +334,24 @@
       min-height:176px;
       border-radius:12px;
       border:1px solid var(--line);
-      background:linear-gradient(135deg,#f6f1ea,#e7ded2);
+      background:
+        radial-gradient(circle at 86% 92%,rgba(255,255,255,.72) 0 35px,transparent 36px),
+        linear-gradient(135deg,#f6f1ea,#e7ded2);
       padding:18px;
       position:relative;
       overflow:hidden;
+    }
+    .case:nth-child(2){
+      background:
+        linear-gradient(180deg,rgba(17,18,19,.08),rgba(17,18,19,.44)),
+        url("./assets/altera-abstract-section.png") center/cover;
+      color:#fff;
+    }
+    .case:nth-child(3){
+      background:
+        linear-gradient(145deg,rgba(14,22,30,.92),rgba(13,28,31,.72)),
+        radial-gradient(circle at 74% 40%,rgba(188,176,154,.3),transparent 28%);
+      color:#fff;
     }
     .case:after{
       content:"";position:absolute;right:-22px;bottom:-36px;width:124px;height:124px;border-radius:50%;
@@ -289,7 +404,7 @@
     @media (max-width:1180px){
       .nav{grid-template-columns:1fr auto}.menu{display:none}.nav-cta{display:block}
       .hero-grid,.modules,.wide-grid,.cases-faq,.final-cta{grid-template-columns:1fr}
-      .hero-visual{min-height:430px}.hero-metrics{right:10px}
+      .hero-visual{min-height:430px}.hero-scene{inset:3% 130px 5% 0}.hero-metrics{right:10px}
       .tariffs{grid-template-columns:1fr 1fr}.trust-panel{min-height:auto}
     }
     @media (max-width:760px){
@@ -299,7 +414,14 @@
       .hero{padding:34px 0 30px}
       h1{font-size:42px;line-height:1.08}.lead{font-size:14px}
       .hero-actions .btn{width:100%}
-      .hero-visual{min-height:300px;margin-top:20px}
+      .hero-visual{min-height:360px;margin-top:20px}
+      .hero-scene{position:relative;inset:auto;height:280px;width:100%;transform:scale(.86);transform-origin:center top;animation:none}
+      .scene-frame{left:5%;top:9%;width:78%;height:72%}
+      .scene-disc{width:142px;height:142px;left:57%;top:4%}
+      .scene-tower{width:122px;height:206px;left:44%;top:20%}
+      .scene-ribbed{width:144px;height:142px;left:18%;top:43%}
+      .scene-cube{width:108px;height:82px;left:35%;top:61%}
+      .scene-sphere{width:58px;height:58px;left:67%;top:72%}
       .hero-metrics{position:static;grid-template-columns:repeat(3,1fr);width:auto;margin-top:14px}
       .metric{display:block}.metric i{display:none}.metric b{font-size:18px}.metric span{font-size:10px}
       .panel{min-height:auto;padding:22px}.features,.tariffs,.cases-row{grid-template-columns:1fr}
@@ -340,7 +462,7 @@
       <div class="container hero-grid">
         <div>
           <div class="eyebrow">Экспертность. Технологии. Спокойствие.</div>
-          <h1>Бухгалтерия нового поколения <strong>для бизнеса, который смотрит вперёд ↗</strong></h1>
+          <h1>Бухгалтерия<br>нового поколения <strong>для бизнеса,<br>который смотрит<br>вперёд ↗</strong></h1>
           <p class="lead">Налоговая экспертиза, международный опыт и современные технологии для вашего спокойствия и роста.</p>
           <div class="hero-actions">
             <button class="btn btn-dark open-qualifier">Получить консультацию ↗</button>
@@ -349,7 +471,18 @@
         </div>
         <div>
           <div class="hero-visual" aria-label="Премиальная композиция AL'TERA">
-            <div class="hero-object"></div>
+            <div class="hero-scene">
+              <span class="scene-frame"></span>
+              <span class="scene-disc"></span>
+              <span class="scene-tower"></span>
+              <span class="scene-ribbed"></span>
+              <span class="scene-cube"></span>
+              <span class="scene-sphere"></span>
+              <span class="scene-line"></span>
+              <span class="scene-plus p1">+</span>
+              <span class="scene-plus p2">+</span>
+              <span class="scene-plus p3">+</span>
+            </div>
             <div class="hero-metrics">
               <div class="metric"><i>◌</i><div><b>10+ лет</b><span>опыта</span></div></div>
               <div class="metric"><i>▥</i><div><b>300+</b><span>клиентов</span></div></div>
