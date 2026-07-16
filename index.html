@@ -75,10 +75,10 @@
       font-size:12px;
       font-weight:700;
       line-height:1;
-      transition:transform .24s ease,box-shadow .24s ease,background .24s ease,border-color .24s ease;
+      transition:transform .28s ease,box-shadow .28s ease,background .28s ease,border-color .28s ease;
       box-shadow:0 8px 22px rgba(30,27,22,.035);
     }
-    .btn:hover{transform:translateY(-1px);box-shadow:0 16px 30px rgba(30,27,22,.1);border-color:rgba(28,31,29,.36);background:rgba(255,255,255,.78)}
+    .btn:hover{transform:translateY(-2px);box-shadow:0 16px 30px rgba(30,27,22,.1);border-color:rgba(28,31,29,.36);background:rgba(255,255,255,.78)}
     .btn:after{content:"↗";font-size:12px;line-height:1;opacity:.86;margin-left:8px}
     .btn-dark{background:#050606;color:#fff;border-color:#050606}
     .btn-dark:hover{background:#151817;border-color:#151817;box-shadow:0 18px 34px rgba(5,6,6,.2)}
@@ -142,7 +142,7 @@
       inset:1% 124px 1% 42px;
       background:url("./assets/altera-hero-render-v2.png") center/96% auto no-repeat;
       filter:drop-shadow(0 34px 50px rgba(37,32,27,.12));
-      animation:floatObject 14s ease-in-out infinite;
+      animation:floatObject 18s ease-in-out infinite;
       transform-origin:center;
     }
     .hero-scene > span{display:none}
@@ -238,8 +238,18 @@
     .scene-plus.p3{left:16%;bottom:18%}
     @keyframes floatObject{
       0%,100%{transform:translate3d(0,0,0) scaleX(1) scaleY(1)}
-      50%{transform:translate3d(-3px,-6px,0) scaleX(1.01) scaleY(1.005)}
+      50%{transform:translate3d(-2px,-5px,0) scaleX(1.006) scaleY(1.003)}
     }
+    .reveal{
+      opacity:0;
+      transform:translateY(18px);
+      transition:opacity .72s ease,transform .72s ease;
+      will-change:opacity,transform;
+    }
+    .reveal.in-view{opacity:1;transform:none}
+    .reveal-delay-1{transition-delay:.08s}
+    .reveal-delay-2{transition-delay:.16s}
+    .reveal-delay-3{transition-delay:.24s}
     .hero-metrics{
       display:grid;
       grid-template-columns:1fr;
@@ -398,6 +408,8 @@
       background:url("./assets/altera-case-international.png") center/cover;
     }
     .case-arrow{position:absolute;left:18px;bottom:18px;background:#fff;color:#101010;z-index:2}
+    .case,.tariff,.panel{transition:transform .32s ease,box-shadow .32s ease,border-color .32s ease}
+    .case:hover,.tariff:hover{transform:translateY(-3px);box-shadow:0 22px 44px rgba(36,31,25,.09)}
     .faq-item{border-bottom:1px solid var(--line)}
     .faq-q{width:100%;padding:17px 0;background:none;border:0;display:flex;align-items:center;justify-content:space-between;text-align:left;font-size:13px}
     .faq-a{max-height:0;overflow:hidden;color:var(--muted);font-size:12px;line-height:1.55;transition:.24s}
@@ -492,6 +504,11 @@
     .q-footer button{min-height:42px}
     .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#15231d;color:white;padding:13px 18px;border-radius:999px;font-size:13px;opacity:0;pointer-events:none;transition:.25s;z-index:200}
     .toast.show{opacity:1;bottom:34px}
+    @media (prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      *,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+      .reveal{opacity:1;transform:none}
+    }
     @media (max-width:1180px){
       .nav{grid-template-columns:1fr auto}.menu{display:none}.nav-cta{display:block}
       .hero-grid,.modules,.wide-grid,.cases-faq,.final-cta{grid-template-columns:1fr}
@@ -788,6 +805,21 @@
   const header=document.getElementById('header');
   addEventListener('scroll',()=>header.classList.toggle('scrolled',scrollY>10));
   document.querySelectorAll('.faq-q').forEach(btn=>btn.addEventListener('click',()=>btn.parentElement.classList.toggle('open')));
+  const revealItems=[...document.querySelectorAll('.panel,.tariff,.case,.final-cta,.hero .lead,.hero-actions,.hero-visual')];
+  revealItems.forEach((el,i)=>{
+    el.classList.add('reveal');
+    if(i%3===1)el.classList.add('reveal-delay-1');
+    if(i%3===2)el.classList.add('reveal-delay-2');
+  });
+  const revealObserver='IntersectionObserver' in window && new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('in-view');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  },{threshold:.14,rootMargin:'0px 0px -6% 0px'});
+  revealItems.forEach(el=>revealObserver?revealObserver.observe(el):el.classList.add('in-view'));
 
   const qualifier=document.getElementById('qualifier');
   const openQualifier=()=>qualifier.classList.add('open');
