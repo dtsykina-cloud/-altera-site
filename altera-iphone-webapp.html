@@ -396,22 +396,75 @@
     .faq-item.open .faq-a{max-height:120px;padding-bottom:16px}
     .final-cta{
       margin:72px auto 56px;
-      min-height:260px;
+      min-height:286px;
       display:grid;
-      grid-template-columns:1.1fr .9fr;
-      gap:20px;
+      grid-template-columns:1.05fr .7fr .9fr;
+      gap:18px;
+      align-items:stretch;
       color:#fff;
       border-radius:16px;
       overflow:hidden;
-      background:
-        linear-gradient(90deg,rgba(10,16,18,.96),rgba(13,18,21,.82)),
-        url("./assets/altera-premium-hero.png") center/cover;
+      background:linear-gradient(135deg,#07100d 0%,#101315 52%,#07090a 100%);
       box-shadow:0 30px 70px rgba(20,18,16,.16);
+      position:relative;
     }
-    .final-cta > div{padding:34px}
-    .final-cta h2{color:#fff;max-width:560px;font-size:34px}
-    .contacts{align-self:end;justify-self:end;min-width:330px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:14px;backdrop-filter:blur(16px)}
-    .contact-row{display:flex;justify-content:space-between;gap:20px;padding:17px 18px;border-bottom:1px solid rgba(255,255,255,.16);font-size:12px}
+    .final-cta:before{
+      content:"";position:absolute;inset:0;
+      background:
+        radial-gradient(circle at 48% 45%,rgba(210,196,166,.12),transparent 26%),
+        linear-gradient(90deg,rgba(255,255,255,.05),transparent 38%,rgba(255,255,255,.04));
+      pointer-events:none;
+    }
+    .final-cta > div{position:relative;z-index:1}
+    .final-copy{padding:38px 0 38px 38px}
+    .final-cta h2{color:#fff;max-width:560px;font-size:36px}
+    .final-visual{display:grid;place-items:end center;min-height:260px;padding:18px 0 0}
+    .final-still-life{
+      width:min(320px,100%);
+      height:210px;
+      position:relative;
+      align-self:end;
+    }
+    .final-still-life:before{
+      content:"";position:absolute;left:18%;right:10%;bottom:8px;height:42px;border-radius:50%;
+      background:radial-gradient(ellipse at center,rgba(0,0,0,.5),transparent 70%);
+      filter:blur(10px);
+    }
+    .book-stack{
+      position:absolute;left:20%;right:13%;bottom:30px;height:72px;
+      background:
+        linear-gradient(#ebe5d9,#ebe5d9) 0 0/100% 22px no-repeat,
+        linear-gradient(#d7cfc2,#d7cfc2) 14px 25px/calc(100% - 20px) 20px no-repeat,
+        linear-gradient(#f7f3ea,#f7f3ea) 4px 49px/calc(100% - 34px) 23px no-repeat;
+      filter:drop-shadow(0 16px 26px rgba(0,0,0,.24));
+    }
+    .stone-ring{
+      position:absolute;left:29%;bottom:86px;width:98px;height:98px;border-radius:50%;
+      background:
+        radial-gradient(circle at 50% 50%,#101315 0 28%,transparent 29%),
+        radial-gradient(circle at 34% 28%,rgba(255,255,255,.8),transparent 18%),
+        linear-gradient(135deg,#efe8da,#b9ad99);
+      box-shadow:inset -12px -10px 24px rgba(61,52,42,.2),0 20px 32px rgba(0,0,0,.26);
+    }
+    .vase{
+      position:absolute;right:12%;bottom:66px;width:42px;height:76px;border-radius:18px 18px 12px 12px;
+      background:linear-gradient(135deg,#1a1d1b,#050606);
+      box-shadow:inset 8px 0 18px rgba(255,255,255,.08),0 18px 28px rgba(0,0,0,.24);
+    }
+    .vase:before{
+      content:"";position:absolute;left:18px;bottom:58px;width:1px;height:80px;
+      background:#879072;transform:rotate(-18deg);transform-origin:bottom;
+      box-shadow:18px -8px 0 #879072,-12px 4px 0 #879072;
+    }
+    .vase:after{
+      content:"";position:absolute;left:6px;top:-30px;width:44px;height:64px;
+      background:
+        radial-gradient(ellipse at 18% 30%,#7f8d68 0 6px,transparent 7px),
+        radial-gradient(ellipse at 48% 18%,#8b9973 0 6px,transparent 7px),
+        radial-gradient(ellipse at 76% 42%,#75835f 0 5px,transparent 6px);
+    }
+    .contacts{align-self:center;justify-self:end;min-width:330px;margin-right:26px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);border-radius:14px;backdrop-filter:blur(16px)}
+    .contact-row{display:flex;justify-content:space-between;gap:20px;padding:18px 18px;border-bottom:1px solid rgba(255,255,255,.16);font-size:12px}
     .contact-row:last-child{border-bottom:0}
     footer{padding:26px 0 42px;color:var(--muted);font-size:12px}
     .mobile-action-bar{display:none}
@@ -438,6 +491,9 @@
       #pricing,#cases{padding-top:44px}
       .hero-visual{min-height:430px}.hero-scene{inset:0 118px 0 26px;background-size:98% auto}.hero-metrics{right:10px}
       .tariffs{grid-template-columns:1fr 1fr}.trust-panel{min-height:auto}
+      .final-copy{padding:34px 34px 0}
+      .final-visual{min-height:190px;padding:0 24px}
+      .contacts{justify-self:stretch;margin:0 34px 34px}
     }
     @media (max-width:760px){
       body{padding-bottom:calc(78px + env(safe-area-inset-bottom))}
@@ -461,7 +517,10 @@
       .panel{min-height:auto;padding:24px}.features,.tariffs,.cases-row{grid-template-columns:1fr}
       .cases-head{display:block}.cases-head a{display:inline-block;margin-top:14px}
       .tariff.featured{transform:none}
-      .contacts{justify-self:stretch;min-width:0}.final-cta{margin:38px auto 34px}.final-cta h2{font-size:29px}
+      .contacts{justify-self:stretch;min-width:0;margin:0 22px 24px}.final-cta{margin:38px auto 34px}.final-cta h2{font-size:29px}
+      .final-copy{padding:28px 22px 0}
+      .final-visual{min-height:165px;padding:0 12px}
+      .final-still-life{height:158px;transform:scale(.9);transform-origin:center bottom}
       .qualifier{right:14px;bottom:90px}
       .options{grid-template-columns:1fr}
       .mobile-action-bar{
@@ -677,10 +736,17 @@
 
     <div class="container">
       <section class="final-cta" id="contacts">
-        <div>
+        <div class="final-copy">
           <div class="section-num">09</div>
           <h2>Бухгалтерия должна помогать бизнесу, а не создавать стресс</h2>
           <button class="btn btn-outline open-qualifier" style="margin-top:28px;color:#fff;border-color:rgba(255,255,255,.32);background:transparent">Получить консультацию +</button>
+        </div>
+        <div class="final-visual" aria-hidden="true">
+          <div class="final-still-life">
+            <span class="book-stack"></span>
+            <span class="stone-ring"></span>
+            <span class="vase"></span>
+          </div>
         </div>
         <div class="contacts">
           <a class="contact-row" href="tel:+78005554565"><span>Телефон</span><b>8 (800) 555-45-65</b></a>
