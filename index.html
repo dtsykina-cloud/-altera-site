@@ -61,24 +61,32 @@
     .menu .dot{width:34px;height:34px;border-radius:50%;background:#0d0f0f;color:#fff;display:grid;place-items:center;font-size:10px}
     .nav-cta{justify-self:end}
     .btn{
-      min-height:48px;
-      padding:0 22px;
+      min-height:46px;
+      min-width:166px;
+      padding:0 20px 0 22px;
       border-radius:999px;
-      border:1px solid var(--line);
-      background:#fff;
+      border:1px solid rgba(28,31,29,.22);
+      background:rgba(255,255,255,.52);
       color:var(--ink);
       display:inline-flex;
       align-items:center;
-      justify-content:center;
+      justify-content:space-between;
       gap:10px;
       font-size:12px;
       font-weight:700;
-      transition:.22s ease;
-      box-shadow:0 10px 24px rgba(30,27,22,.04);
+      line-height:1;
+      transition:transform .24s ease,box-shadow .24s ease,background .24s ease,border-color .24s ease;
+      box-shadow:0 8px 22px rgba(30,27,22,.035);
     }
-    .btn:hover{transform:translateY(-2px);box-shadow:0 18px 34px rgba(30,27,22,.11)}
+    .btn:hover{transform:translateY(-1px);box-shadow:0 16px 30px rgba(30,27,22,.1);border-color:rgba(28,31,29,.36);background:rgba(255,255,255,.78)}
+    .btn:after{content:"↗";font-size:12px;line-height:1;opacity:.86;margin-left:8px}
     .btn-dark{background:#050606;color:#fff;border-color:#050606}
-    .btn-outline{background:rgba(255,255,255,.36)}
+    .btn-dark:hover{background:#151817;border-color:#151817;box-shadow:0 18px 34px rgba(5,6,6,.2)}
+    .btn-outline{background:rgba(255,255,255,.42)}
+    .btn-on-dark{color:#fff;border-color:rgba(255,255,255,.3);background:rgba(255,255,255,.04);box-shadow:none}
+    .btn-on-dark:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.5);box-shadow:0 18px 34px rgba(0,0,0,.18)}
+    .btn-icon-only{min-width:50px;width:50px;padding:0;justify-content:center}
+    .btn-icon-only:after{content:""}
     .section-num{font-size:11px;color:var(--muted);font-weight:700;margin-bottom:22px}
     .eyebrow{
       color:#6d756f;
@@ -529,7 +537,7 @@
         background:rgba(251,248,242,.94);border-top:1px solid var(--line);backdrop-filter:blur(18px)
       }
       .mobile-action-bar .btn{min-height:50px}
-      .mobile-action-bar .call-btn{padding:0;font-size:18px}
+      .mobile-action-bar .call-btn{padding:0;font-size:18px;min-width:50px}
     }
   </style>
 </head>
@@ -565,7 +573,7 @@
         <a href="#faq">FAQ</a>
         <a href="#contacts">Контакты</a>
       </nav>
-      <div class="nav-cta"><button class="btn btn-dark open-qualifier">Получить консультацию ↗</button></div>
+      <div class="nav-cta"><button class="btn btn-dark open-qualifier">Получить консультацию</button></div>
     </div>
   </header>
 
@@ -577,8 +585,8 @@
           <h1>Бухгалтерия<br>нового поколения <strong>для бизнеса,<br>который смотрит<br>вперёд ↗</strong></h1>
           <p class="lead">Налоговая экспертиза, международный опыт и современные технологии для вашего спокойствия и роста.</p>
           <div class="hero-actions">
-            <button class="btn btn-dark open-qualifier">Получить консультацию ↗</button>
-            <button class="btn btn-outline open-qualifier">Рассчитать тариф ↗</button>
+            <button class="btn btn-dark open-qualifier">Получить консультацию</button>
+            <button class="btn btn-outline open-qualifier">Рассчитать тариф</button>
           </div>
         </div>
         <div>
@@ -619,7 +627,7 @@
             <div class="feature"><i class="icon"><svg><use href="#i-refresh"/></svg></i><div><b>Быстрый сервис</b><span>Отвечаем быстро и без бюрократии.</span></div></div>
             <div class="feature"><i class="icon"><svg><use href="#i-user"/></svg></i><div><b>Личный бухгалтер</b><span>Вы всегда знаете, кто ведёт ваш бизнес.</span></div></div>
           </div>
-          <a class="btn btn-outline" href="#services" style="margin-top:28px;color:#fff;border-color:rgba(255,255,255,.28);background:transparent">Все преимущества +</a>
+          <a class="btn btn-on-dark" href="#services" style="margin-top:28px">Все преимущества</a>
         </article>
 
         <article class="panel night">
@@ -629,7 +637,7 @@
             <span class="chip">ИП</span><span class="chip">ООО</span><span class="chip">IT-компании</span>
             <span class="chip">Международный бизнес</span><span class="chip">Рестораны</span><span class="chip">Медицина</span>
           </div>
-          <a class="btn btn-outline" href="#contacts" style="margin-top:36px;color:#fff;border-color:rgba(255,255,255,.28);background:transparent">Смотреть все сферы →</a>
+          <a class="btn btn-on-dark" href="#contacts" style="margin-top:36px">Смотреть все сферы</a>
           <div class="sculpture-mini"></div>
         </article>
 
@@ -645,7 +653,7 @@
             <div class="service"><i class="icon"><svg><use href="#i-refresh"/></svg></i><span>Восстановление учёта</span><b>→</b></div>
             <div class="service"><i class="icon"><svg><use href="#i-audit"/></svg></i><span>Экспресс-аудит</span><b>→</b></div>
           </div>
-          <a class="btn btn-outline" href="#contacts" style="margin-top:24px">Смотреть все услуги +</a>
+          <a class="btn btn-outline" href="#contacts" style="margin-top:24px">Смотреть все услуги</a>
         </article>
       </div>
     </section>
@@ -685,7 +693,7 @@
             <div class="process-step"><div class="process-num">2</div><div><b>Аудит</b><span>Проверяем риски и процессы.</span></div></div>
             <div class="process-step"><div class="process-num">3</div><div><b>Передача бухгалтерии</b><span>Настраиваем работу и берём всё на сопровождение.</span></div></div>
           </div>
-          <button class="btn btn-outline open-qualifier" style="margin-top:28px">Как мы работаем +</button>
+          <button class="btn btn-outline open-qualifier" style="margin-top:28px">Как мы работаем</button>
         </article>
       </div>
     </section>
@@ -739,7 +747,7 @@
         <div class="final-copy">
           <div class="section-num">09</div>
           <h2>Бухгалтерия должна помогать бизнесу, а не создавать стресс</h2>
-          <button class="btn btn-outline open-qualifier" style="margin-top:28px;color:#fff;border-color:rgba(255,255,255,.32);background:transparent">Получить консультацию +</button>
+          <button class="btn btn-on-dark open-qualifier" style="margin-top:28px">Получить консультацию</button>
         </div>
         <div class="final-visual" aria-hidden="true">
           <div class="final-still-life">
@@ -761,7 +769,7 @@
 </div>
 
 <div class="mobile-action-bar" aria-label="Быстрые действия">
-  <a class="btn call-btn" href="tel:+78005554565" aria-label="Позвонить">☎</a>
+  <a class="btn btn-icon-only call-btn" href="tel:+78005554565" aria-label="Позвонить">☎</a>
   <button class="btn btn-dark open-qualifier">Получить расчёт</button>
 </div>
 
