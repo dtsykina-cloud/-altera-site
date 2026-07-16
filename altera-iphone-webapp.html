@@ -249,6 +249,7 @@
       display:grid;place-items:center;font-size:13px;font-style:normal;
       background:rgba(255,255,255,.35);
     }
+    .icon svg{width:15px;height:15px;display:block;stroke:currentColor;stroke-width:1.55;stroke-linecap:round;stroke-linejoin:round;fill:none}
     .metric b{display:block;font-size:18px;line-height:1;margin-bottom:5px}
     .metric span{font-size:10px;color:var(--muted);line-height:1.3}
     .modules{display:grid;grid-template-columns:1.05fr .9fr .85fr;gap:22px;margin-top:0}
@@ -277,6 +278,7 @@
       width:30px;height:30px;border-radius:50%;border:1px solid currentColor;
       display:grid;place-items:center;font-style:normal;font-size:13px;opacity:.82;
     }
+    .feature i,.service i{color:inherit}
     .feature b{display:block;font-size:13px;margin-bottom:7px}
     .feature span{font-size:11px;line-height:1.45;color:rgba(255,255,255,.62)}
     .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px}
@@ -474,6 +476,24 @@
 </head>
 <body>
 <div class="page">
+  <svg aria-hidden="true" width="0" height="0" style="position:absolute;overflow:hidden">
+    <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M8.7 11.4 7 21l5-3 5 3-1.7-9.6"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 19v-1.4c0-2-1.6-3.6-3.6-3.6H8.6C6.6 14 5 15.6 5 17.6V19"/><circle cx="10.5" cy="7.5" r="3"/><path d="M18 11.5c1.7.2 3 1.6 3 3.4V16"/><path d="M16.8 4.5a2.7 2.7 0 0 1 0 5.2"/></symbol>
+    <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></symbol>
+    <symbol id="i-trend" viewBox="0 0 24 24"><path d="M4 17h16"/><path d="M6 15 11 10l4 3 4-7"/><path d="M16 6h3v3"/></symbol>
+    <symbol id="i-bank" viewBox="0 0 24 24"><path d="M4 10h16"/><path d="M6 10v7M10 10v7M14 10v7M18 10v7"/><path d="M3 19h18"/><path d="M5 8l7-4 7 4"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="6" y="10" width="12" height="10" rx="2"/><path d="M9 10V7a3 3 0 0 1 6 0v3"/><path d="M12 14v2"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 19 6v5c0 4.7-3 8.2-7 10-4-1.8-7-5.3-7-10V6l7-3Z"/><path d="m9 12 2 2 4-5"/></symbol>
+    <symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 3v5M12 16v5M3 12h5M16 12h5"/><path d="m6.5 6.5 2.2 2.2M15.3 15.3l2.2 2.2M17.5 6.5l-2.2 2.2M8.7 15.3l-2.2 2.2"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 1-13.5 5.8"/><path d="M4 12A8 8 0 0 1 17.5 6.2"/><path d="M7 18H4v-3M17 6h3v3"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M5 20c.8-3.6 3.2-5.5 7-5.5s6.2 1.9 7 5.5"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M5 5.5A2.5 2.5 0 0 1 7.5 3H20v16H7.5A2.5 2.5 0 0 0 5 21V5.5Z"/><path d="M5 18.5A2.5 2.5 0 0 1 7.5 16H20"/></symbol>
+    <symbol id="i-tax" viewBox="0 0 24 24"><path d="M7 17 17 7"/><circle cx="8" cy="8" r="2"/><circle cx="16" cy="16" r="2"/></symbol>
+    <symbol id="i-payroll" viewBox="0 0 24 24"><path d="M4 7h16v12H4z"/><path d="M8 7V5h8v2"/><path d="M8 12h8M8 16h5"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.4 2.5 3.5 5.5 3.5 9S14.4 18.5 12 21"/><path d="M12 3c-2.4 2.5-3.5 5.5-3.5 9S9.6 18.5 12 21"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v5h4"/><path d="M10 13h5M10 17h5"/></symbol>
+    <symbol id="i-audit" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="5.5"/><path d="m15 15 4 4"/><path d="M8.5 10.5h4"/></symbol>
+  </svg>
   <header class="header" id="header">
     <div class="container nav">
       <a class="brand" href="#top"><strong>AL’TERA</strong><small>экспертная бухгалтерия</small></a>
@@ -517,10 +537,10 @@
               <span class="scene-plus p3">+</span>
             </div>
             <div class="hero-metrics">
-              <div class="metric"><i>◌</i><div><b>10+ лет</b><span>опыта</span></div></div>
-              <div class="metric"><i>▥</i><div><b>300+</b><span>клиентов</span></div></div>
-              <div class="metric"><i>◎</i><div><b>Big4</b><span>подход</span></div></div>
-              <div class="metric"><i>↗</i><div><b>0</b><span>штрафов по вине компании</span></div></div>
+              <div class="metric"><i class="icon"><svg><use href="#i-award"/></svg></i><div><b>10+ лет</b><span>опыта</span></div></div>
+              <div class="metric"><i class="icon"><svg><use href="#i-users"/></svg></i><div><b>300+</b><span>клиентов</span></div></div>
+              <div class="metric"><i class="icon"><svg><use href="#i-target"/></svg></i><div><b>Big4</b><span>подход</span></div></div>
+              <div class="metric"><i class="icon"><svg><use href="#i-trend"/></svg></i><div><b>0</b><span>штрафов по вине компании</span></div></div>
             </div>
           </div>
         </div>
@@ -533,12 +553,12 @@
           <div class="section-num">02</div>
           <h3>Почему нам доверяют бизнес</h3>
           <div class="features">
-            <div class="feature"><i>▥</i><div><b>Опыт PwC и Big4</b><span>Подход крупных финкоманд в доступном формате.</span></div></div>
-            <div class="feature"><i>▣</i><div><b>Фиксированные тарифы</b><span>Понятная стоимость без скрытых доплат.</span></div></div>
-            <div class="feature"><i>◇</i><div><b>Налоговые юристы</b><span>Снижаем риски и готовим отчётность.</span></div></div>
-            <div class="feature"><i>✦</i><div><b>AI и автоматизация</b><span>Минимум ручной рутины и ошибок.</span></div></div>
-            <div class="feature"><i>↻</i><div><b>Быстрый сервис</b><span>Отвечаем быстро и без бюрократии.</span></div></div>
-            <div class="feature"><i>◎</i><div><b>Личный бухгалтер</b><span>Вы всегда знаете, кто ведёт ваш бизнес.</span></div></div>
+            <div class="feature"><i class="icon"><svg><use href="#i-bank"/></svg></i><div><b>Опыт PwC и Big4</b><span>Подход крупных финкоманд в доступном формате.</span></div></div>
+            <div class="feature"><i class="icon"><svg><use href="#i-lock"/></svg></i><div><b>Фиксированные тарифы</b><span>Понятная стоимость без скрытых доплат.</span></div></div>
+            <div class="feature"><i class="icon"><svg><use href="#i-shield"/></svg></i><div><b>Налоговые юристы</b><span>Снижаем риски и готовим отчётность.</span></div></div>
+            <div class="feature"><i class="icon"><svg><use href="#i-spark"/></svg></i><div><b>AI и автоматизация</b><span>Минимум ручной рутины и ошибок.</span></div></div>
+            <div class="feature"><i class="icon"><svg><use href="#i-refresh"/></svg></i><div><b>Быстрый сервис</b><span>Отвечаем быстро и без бюрократии.</span></div></div>
+            <div class="feature"><i class="icon"><svg><use href="#i-user"/></svg></i><div><b>Личный бухгалтер</b><span>Вы всегда знаете, кто ведёт ваш бизнес.</span></div></div>
           </div>
           <a class="btn btn-outline" href="#services" style="margin-top:28px;color:#fff;border-color:rgba(255,255,255,.28);background:transparent">Все преимущества +</a>
         </article>
@@ -558,13 +578,13 @@
           <div class="section-num">04</div>
           <h3>Всё, что нужно для спокойной работы</h3>
           <div class="services">
-            <div class="service"><i>□</i><span>Бухгалтерское сопровождение</span><b>→</b></div>
-            <div class="service"><i>◇</i><span>Налоговое сопровождение</span><b>→</b></div>
-            <div class="service"><i>▦</i><span>Кадровый учёт и расчёт зарплаты</span><b>→</b></div>
-            <div class="service"><i>◎</i><span>Международные операции</span><b>→</b></div>
-            <div class="service"><i>▤</i><span>Подготовка и сдача отчётности</span><b>→</b></div>
-            <div class="service"><i>↻</i><span>Восстановление учёта</span><b>→</b></div>
-            <div class="service"><i>✧</i><span>Экспресс-аудит</span><b>→</b></div>
+            <div class="service"><i class="icon"><svg><use href="#i-book"/></svg></i><span>Бухгалтерское сопровождение</span><b>→</b></div>
+            <div class="service"><i class="icon"><svg><use href="#i-tax"/></svg></i><span>Налоговое сопровождение</span><b>→</b></div>
+            <div class="service"><i class="icon"><svg><use href="#i-payroll"/></svg></i><span>Кадровый учёт и расчёт зарплаты</span><b>→</b></div>
+            <div class="service"><i class="icon"><svg><use href="#i-globe"/></svg></i><span>Международные операции</span><b>→</b></div>
+            <div class="service"><i class="icon"><svg><use href="#i-file"/></svg></i><span>Подготовка и сдача отчётности</span><b>→</b></div>
+            <div class="service"><i class="icon"><svg><use href="#i-refresh"/></svg></i><span>Восстановление учёта</span><b>→</b></div>
+            <div class="service"><i class="icon"><svg><use href="#i-audit"/></svg></i><span>Экспресс-аудит</span><b>→</b></div>
           </div>
           <a class="btn btn-outline" href="#contacts" style="margin-top:24px">Смотреть все услуги +</a>
         </article>
