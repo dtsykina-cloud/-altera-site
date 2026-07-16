@@ -102,7 +102,7 @@
     h3{font-size:22px;line-height:1.15;letter-spacing:-.025em;margin:0 0 22px}
     .lead{max-width:440px;color:#4f5652;font-size:14px;line-height:1.75;margin-bottom:34px}
     .hero{padding:58px 0 44px;position:relative}
-    .hero-grid{display:grid;grid-template-columns:.76fr 1.24fr;gap:48px;align-items:center}
+    .hero-grid{display:grid;grid-template-columns:.82fr 1.18fr;gap:54px;align-items:center}
     .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
     .hero-visual{
       min-height:500px;
@@ -128,8 +128,8 @@
     .hero-object{display:none}
     .hero-scene{
       position:absolute;
-      inset:-1% 92px 0 28px;
-      background:url("./assets/altera-hero-render-v2.png") center/102% auto no-repeat;
+      inset:1% 124px 1% 42px;
+      background:url("./assets/altera-hero-render-v2.png") center/96% auto no-repeat;
       filter:drop-shadow(0 34px 50px rgba(37,32,27,.12));
       animation:floatObject 14s ease-in-out infinite;
       transform-origin:center;
@@ -226,8 +226,8 @@
     .scene-plus.p2{left:87%;top:60%}
     .scene-plus.p3{left:16%;bottom:18%}
     @keyframes floatObject{
-      0%,100%{transform:translate3d(0,0,0) scaleX(1.04) scaleY(.98)}
-      50%{transform:translate3d(-4px,-8px,0) scaleX(1.05) scaleY(.985)}
+      0%,100%{transform:translate3d(0,0,0) scaleX(1) scaleY(1)}
+      50%{transform:translate3d(-3px,-6px,0) scaleX(1.01) scaleY(1.005)}
     }
     .hero-metrics{
       display:grid;
@@ -330,8 +330,8 @@
     }
     .process-step b{display:block;font-size:13px;margin-bottom:5px}
     .process-step span{font-size:11px;color:var(--muted);line-height:1.45}
-    .cases-faq{display:grid;grid-template-columns:1.48fr .82fr;gap:18px;margin-top:18px}
-    .cases-panel{min-height:390px;background:rgba(255,255,255,.42)}
+    .cases-faq{display:grid;grid-template-columns:1.5fr .8fr;gap:18px;margin-top:18px}
+    .cases-panel{min-height:410px;background:rgba(255,255,255,.48);padding:28px}
     .cases-head{display:flex;justify-content:space-between;gap:20px;align-items:start;margin-bottom:22px}
     .cases-head a{white-space:nowrap;font-size:12px}
     .cases-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:0}
@@ -345,7 +345,7 @@
       overflow:hidden;
       display:flex;
       flex-direction:column;
-      box-shadow:0 18px 38px rgba(36,31,25,.06);
+      box-shadow:0 16px 34px rgba(36,31,25,.055);
     }
     .case:nth-child(2){
       background:
@@ -366,11 +366,12 @@
     }
     .case > *{position:relative;z-index:1}
     .case span{display:inline-block;align-self:flex-start;font-size:9px;text-transform:uppercase;border:1px solid currentColor;border-radius:999px;padding:5px 8px;margin-bottom:16px;opacity:.72}
-    .case b{display:block;font-size:13px;line-height:1.38;max-width:210px;font-weight:650}
-    .case p{margin:12px 0 0;color:#17201c;font-size:13px;line-height:1.35;font-weight:650;letter-spacing:-.02em;max-width:190px}
+    .case b{display:block;font-size:13px;line-height:1.36;max-width:220px;font-weight:650}
+    .case p{margin:12px 0 0;color:#17201c;font-size:12px;line-height:1.38;font-weight:650;letter-spacing:-.01em;max-width:200px}
     .case:nth-child(2) p,.case:nth-child(3) p{color:#fff}
-    .case-visual{margin-top:auto;height:108px;border-radius:10px;overflow:hidden;position:relative}
+    .case-visual{margin-top:auto;height:118px;border-radius:10px;overflow:hidden;position:relative}
     .case-visual.laptop{
+      border:1px solid rgba(32,42,36,.08);
       background:
         radial-gradient(circle at 78% 22%,rgba(13,86,70,.14),transparent 28%),
         linear-gradient(135deg,#fbfaf6,#ebe2d6);
@@ -389,11 +390,13 @@
       background:linear-gradient(90deg,#d8d0c5,#f8f4ec,#cfc6b8);
     }
     .case-visual.photo{
+      border:1px solid rgba(255,255,255,.18);
       background:
         linear-gradient(135deg,rgba(25,24,22,.08),rgba(0,0,0,.64)),
         url("./assets/altera-premium-hero.png") center/cover;
     }
     .case-visual.map{
+      border:1px solid rgba(255,255,255,.14);
       background:
         radial-gradient(circle at 26% 34%,rgba(218,206,183,.7),transparent 2px),
         radial-gradient(circle at 64% 44%,rgba(218,206,183,.7),transparent 2px),
@@ -447,7 +450,7 @@
     @media (max-width:1180px){
       .nav{grid-template-columns:1fr auto}.menu{display:none}.nav-cta{display:block}
       .hero-grid,.modules,.wide-grid,.cases-faq,.final-cta{grid-template-columns:1fr}
-      .hero-visual{min-height:430px}.hero-scene{inset:0 118px 0 16px;background-size:104% auto}.hero-metrics{right:10px}
+      .hero-visual{min-height:430px}.hero-scene{inset:0 118px 0 26px;background-size:98% auto}.hero-metrics{right:10px}
       .tariffs{grid-template-columns:1fr 1fr}.trust-panel{min-height:auto}
     }
     @media (max-width:760px){
@@ -458,7 +461,7 @@
       h1{font-size:42px;line-height:1.08}.lead{font-size:14px}
       .hero-actions .btn{width:100%}
       .hero-visual{min-height:360px;margin-top:20px}
-      .hero-scene{position:relative;inset:auto;height:280px;width:100%;transform:none;transform-origin:center top;animation:none;background-size:104% auto;background-position:center}
+      .hero-scene{position:relative;inset:auto;height:280px;width:100%;transform:none;transform-origin:center top;animation:none;background-size:98% auto;background-position:center}
       .scene-frame{left:5%;top:9%;width:78%;height:72%}
       .scene-disc{width:142px;height:142px;left:57%;top:4%}
       .scene-tower{width:122px;height:206px;left:44%;top:20%}
