@@ -345,14 +345,51 @@
     .price{font-size:25px;font-weight:800;margin:22px 0 18px;letter-spacing:-.04em}
     .tariff ul{list-style:none;padding:0;margin:0;font-size:12px;line-height:2}
     .tariff li:before{content:"✓";margin-right:9px}
-    .process{display:grid;gap:20px;margin-top:22px}
-    .process-step{display:grid;grid-template-columns:38px 1fr;gap:14px;align-items:start}
-    .process-num{
-      width:38px;height:38px;border-radius:50%;border:1px solid var(--line);
-      display:grid;place-items:center;background:#fff;font-weight:700;font-size:12px;
+    .process-panel{
+      background:
+        radial-gradient(circle at 108% 50%,rgba(217,207,190,.82) 0 102px,transparent 104px),
+        linear-gradient(145deg,rgba(255,255,255,.46),rgba(247,243,236,.38));
     }
-    .process-step b{display:block;font-size:13px;margin-bottom:5px}
-    .process-step span{font-size:11px;color:var(--muted);line-height:1.45}
+    .process-panel:before{
+      content:"";position:absolute;right:-96px;top:50%;width:220px;height:220px;border-radius:50%;
+      border:1px solid rgba(137,126,108,.16);
+      transform:translateY(-50%);
+      pointer-events:none;
+    }
+    .process-panel h3{max-width:300px}
+    .process{
+      display:grid;
+      gap:0;
+      margin-top:28px;
+      position:relative;
+      z-index:1;
+    }
+    .process:before{
+      content:"";position:absolute;left:18px;top:38px;bottom:38px;width:1px;
+      background:linear-gradient(180deg,transparent,rgba(35,43,38,.22) 12%,rgba(35,43,38,.22) 88%,transparent);
+    }
+    .process-step{
+      display:grid;
+      grid-template-columns:38px 1fr;
+      gap:16px;
+      align-items:start;
+      padding:0 0 24px;
+      position:relative;
+    }
+    .process-step:not(:last-child):after{
+      content:"";position:absolute;left:54px;right:0;bottom:12px;height:1px;
+      background:linear-gradient(90deg,rgba(35,43,38,.12),transparent);
+    }
+    .process-step:last-child{padding-bottom:0}
+    .process-num{
+      width:38px;height:38px;border-radius:50%;border:1px solid rgba(32,42,36,.18);
+      display:grid;place-items:center;background:rgba(255,255,255,.72);font-weight:700;font-size:12px;
+      box-shadow:0 10px 24px rgba(35,31,25,.08);
+      position:relative;
+      z-index:1;
+    }
+    .process-step b{display:block;font-size:14px;margin-bottom:7px;letter-spacing:-.01em}
+    .process-step span{font-size:12px;color:var(--muted);line-height:1.5;max-width:245px;display:block}
     .cases-faq{display:grid;grid-template-columns:1.5fr .8fr;gap:22px;margin-top:0}
     .cases-panel{min-height:410px;background:rgba(255,255,255,.48);padding:28px}
     .cases-head{display:flex;justify-content:space-between;gap:20px;align-items:start;margin-bottom:22px}
@@ -702,13 +739,13 @@
           </div>
         </article>
 
-        <article class="panel">
+        <article class="panel process-panel">
           <div class="section-num">06</div>
           <h3>Берём бухгалтерию на себя за 3 шага</h3>
           <div class="process">
-            <div class="process-step"><div class="process-num">1</div><div><b>Консультация</b><span>Разбираем текущую ситуацию.</span></div></div>
-            <div class="process-step"><div class="process-num">2</div><div><b>Аудит</b><span>Проверяем риски и процессы.</span></div></div>
-            <div class="process-step"><div class="process-num">3</div><div><b>Передача бухгалтерии</b><span>Настраиваем работу и берём всё на сопровождение.</span></div></div>
+            <div class="process-step"><div class="process-num">1</div><div><b>Консультация</b><span>Разбираем текущую ситуацию, систему налогообложения и объём задач.</span></div></div>
+            <div class="process-step"><div class="process-num">2</div><div><b>Аудит</b><span>Проверяем риски, документы, процессы и зоны ответственности.</span></div></div>
+            <div class="process-step"><div class="process-num">3</div><div><b>Передача бухгалтерии</b><span>Настраиваем регламент, календарь отчётности и берём сопровождение на себя.</span></div></div>
           </div>
           <button class="btn btn-outline open-qualifier" style="margin-top:28px">Как мы работаем</button>
         </article>
