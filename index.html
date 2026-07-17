@@ -154,8 +154,11 @@
       pointer-events:none;
       z-index:1;
       background:
-        linear-gradient(90deg,#fbf8f3 0%,rgba(251,248,243,.98) 38%,rgba(251,248,243,.7) 51%,rgba(251,248,243,.18) 64%,rgba(251,248,243,0) 76%),
-        radial-gradient(ellipse at 22% 42%,rgba(255,255,255,.62),transparent 32%);
+        linear-gradient(90deg,#fbf8f3 0%,rgba(251,248,243,.99) 37%,rgba(251,248,243,.76) 51%,rgba(251,248,243,.22) 66%,rgba(251,248,243,0) 78%),
+        linear-gradient(180deg,#fbf8f3 0%,rgba(251,248,243,.78) 9%,rgba(251,248,243,0) 24%,rgba(251,248,243,0) 76%,rgba(251,248,243,.72) 92%,#fbf8f3 100%),
+        linear-gradient(270deg,#fbf8f3 0%,rgba(251,248,243,.52) 8%,rgba(251,248,243,0) 20%),
+        radial-gradient(ellipse at 22% 42%,rgba(255,255,255,.68),transparent 32%),
+        radial-gradient(ellipse at 82% 50%,rgba(251,248,243,0) 0 42%,rgba(251,248,243,.38) 73%,rgba(251,248,243,.82) 100%);
     }
     main > section:not(.hero){padding:42px 0}
     #pricing{padding-top:68px}
@@ -606,7 +609,12 @@
       main > section:not(.hero){padding:34px 0}
       #pricing,#cases{padding-top:44px}
       .hero:before{background-size:720px auto;background-position:right -180px top 224px;opacity:.92}
-      .hero:after{background:linear-gradient(180deg,#fbf8f3 0%,rgba(251,248,243,.98) 46%,rgba(251,248,243,.55) 65%,rgba(251,248,243,0) 84%)}
+      .hero:after{
+        background:
+          linear-gradient(180deg,#fbf8f3 0%,rgba(251,248,243,.99) 44%,rgba(251,248,243,.58) 64%,rgba(251,248,243,0) 82%,rgba(251,248,243,.72) 100%),
+          linear-gradient(90deg,#fbf8f3 0%,rgba(251,248,243,.72) 34%,rgba(251,248,243,0) 72%),
+          linear-gradient(270deg,#fbf8f3 0%,rgba(251,248,243,.48) 11%,rgba(251,248,243,0) 28%);
+      }
       .hero-visual{min-height:410px;max-width:800px;justify-self:center}
       .hero-scene{inset:0 104px 0 -22px;background-size:96% auto}
       .hero-metrics{right:0;top:17%}
