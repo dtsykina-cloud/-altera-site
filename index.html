@@ -157,15 +157,25 @@
       content:"";
       position:absolute;
       inset:-34px 0 -42px;
-      background:url("./assets/altera-hero-reference-v2.png") right 46% center/980px auto no-repeat;
-      opacity:.88;
+      background:url("./assets/altera-hero-reference-v2.png") right -72px center/840px auto no-repeat;
+      opacity:.78;
       pointer-events:none;
       z-index:0;
+    }
+    .hero:after{
+      content:"";
+      position:absolute;
+      inset:-34px 0 -42px;
+      pointer-events:none;
+      z-index:1;
+      background:
+        linear-gradient(90deg,#fbf8f3 0%,rgba(251,248,243,.98) 35%,rgba(251,248,243,.82) 48%,rgba(251,248,243,.28) 61%,rgba(251,248,243,0) 74%),
+        radial-gradient(ellipse at 21% 43%,rgba(255,255,255,.72),transparent 34%);
     }
     main > section:not(.hero){padding:42px 0}
     #pricing{padding-top:68px}
     #cases{padding-top:70px;padding-bottom:36px}
-    .hero-grid{display:grid;grid-template-columns:.84fr 1.16fr;gap:62px;align-items:center;position:relative;z-index:1}
+    .hero-grid{display:grid;grid-template-columns:.84fr 1.16fr;gap:62px;align-items:center;position:relative;z-index:2}
     .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
     .hero-visual{
       min-height:472px;
@@ -611,7 +621,8 @@
       main > section:not(.hero){padding:34px 0}
       #pricing,#cases{padding-top:44px}
       .page:after{background-size:620px auto,560px auto;background-position:left -320px top 1120px,right -300px top 2360px;opacity:.1}
-      .hero:before{background-size:850px auto;background-position:right -80px top 210px;opacity:.92}
+      .hero:before{background-size:740px auto;background-position:right -210px top 238px;opacity:.72}
+      .hero:after{background:linear-gradient(180deg,#fbf8f3 0%,rgba(251,248,243,.98) 43%,rgba(251,248,243,.55) 62%,rgba(251,248,243,0) 82%)}
       .hero-visual{min-height:410px;max-width:800px;justify-self:center}
       .hero-scene{inset:0 104px 0 -22px;background-size:96% auto}
       .hero-metrics{right:0;top:17%}
@@ -627,6 +638,7 @@
       .nav{height:66px}.brand small,.nav-cta{display:none}.brand strong{font-size:25px}
       .hero{padding:42px 0 34px}
       .hero:before{display:none}
+      .hero:after{display:none}
       main > section:not(.hero){padding:28px 0}
       #pricing,#cases{padding-top:34px}
       h1{font-size:42px;line-height:1.08}.lead{font-size:14px}
