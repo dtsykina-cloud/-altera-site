@@ -137,11 +137,20 @@
     h2{font-size:31px;line-height:1.13;letter-spacing:-.035em;margin:0;font-weight:650}
     h3{font-size:22px;line-height:1.15;letter-spacing:-.025em;margin:0 0 22px}
     .lead{max-width:440px;color:#4f5652;font-size:14px;line-height:1.75;margin-bottom:34px}
-    .hero{padding:68px 0 58px;position:relative}
+    .hero{padding:68px 0 58px;position:relative;overflow:hidden}
+    .hero:before{
+      content:"";
+      position:absolute;
+      inset:-34px 0 -42px;
+      background:url("./assets/altera-hero-reference-v2.png") right 46% center/980px auto no-repeat;
+      opacity:.98;
+      pointer-events:none;
+      z-index:0;
+    }
     main > section:not(.hero){padding:42px 0}
     #pricing{padding-top:68px}
     #cases{padding-top:70px;padding-bottom:36px}
-    .hero-grid{display:grid;grid-template-columns:.84fr 1.16fr;gap:62px;align-items:center}
+    .hero-grid{display:grid;grid-template-columns:.84fr 1.16fr;gap:62px;align-items:center;position:relative;z-index:1}
     .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
     .hero-visual{
       min-height:472px;
@@ -159,6 +168,7 @@
         radial-gradient(circle at 74% 34%,rgba(232,224,211,.34),transparent 27%),
         linear-gradient(180deg,rgba(255,255,255,.2),rgba(255,255,255,0));
       z-index:-2;
+      display:none;
     }
     .hero-visual:after{
       content:"";
@@ -167,6 +177,7 @@
       background:radial-gradient(ellipse at center,rgba(31,30,27,.13),rgba(31,30,27,0) 72%);
       filter:blur(18px);
       z-index:-1;
+      display:none;
     }
     .hero-object{display:none}
     .hero-scene{
@@ -176,6 +187,7 @@
       filter:drop-shadow(0 34px 50px rgba(37,32,27,.1));
       animation:floatObject 18s ease-in-out infinite;
       transform-origin:center;
+      display:none;
     }
     .hero-scene > span{display:none}
     .scene-frame{
@@ -583,6 +595,7 @@
       .hero-grid,.modules,.wide-grid,.cases-faq,.final-cta{grid-template-columns:1fr}
       main > section:not(.hero){padding:34px 0}
       #pricing,#cases{padding-top:44px}
+      .hero:before{background-size:850px auto;background-position:right -80px top 210px;opacity:.92}
       .hero-visual{min-height:410px;max-width:800px;justify-self:center}
       .hero-scene{inset:0 104px 0 -22px;background-size:96% auto}
       .hero-metrics{right:0;top:17%}
@@ -596,12 +609,13 @@
       .container{width:min(100% - 28px,1380px)}
       .nav{height:66px}.brand small,.nav-cta{display:none}.brand strong{font-size:25px}
       .hero{padding:42px 0 34px}
+      .hero:before{display:none}
       main > section:not(.hero){padding:28px 0}
       #pricing,#cases{padding-top:34px}
       h1{font-size:42px;line-height:1.08}.lead{font-size:14px}
       .hero-actions .btn{width:100%}
       .hero-visual{min-height:348px;margin-top:16px}
-      .hero-scene{position:relative;inset:auto;height:256px;width:100%;transform:none;transform-origin:center top;animation:none;background-size:108% auto;background-position:center right}
+      .hero-scene{display:block;position:relative;inset:auto;height:256px;width:100%;transform:none;transform-origin:center top;animation:none;background-size:108% auto;background-position:center right}
       .scene-frame{left:5%;top:9%;width:78%;height:72%}
       .scene-disc{width:142px;height:142px;left:57%;top:4%}
       .scene-tower{width:122px;height:206px;left:44%;top:20%}
